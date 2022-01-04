@@ -1,4 +1,3 @@
-import Logo from "../../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,7 +5,7 @@ export default function Header() {
   return (
     <div className="flex p-12  justify-center ">
       <div className="flex space-x-12 text-3xl items-center		  ">
-        <Link href="/">
+        <Link href="/dao">
           <a className="link link-underline  link-underline-black text-black">
             DAO
           </a>
