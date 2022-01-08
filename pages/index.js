@@ -68,33 +68,59 @@ console.log(current)
     
 console.log(data.padawans[current])
 
-  const itemList2 = [...Array(8)].map((e, i ) =>  (
-    <span key={i}>
-      <h1>s {data.padawans[1].name}</h1>
-      
-    </span>
-  ));
-  console.log(current)
+console.log(data.padawans + "this")  
+const testv = Object.keys(data.padawans)
+  console.log(Object.keys(data.padawans))
 
   
-  
+  testv.map(index => {
+    // const data = data.padawans[index]
+    return (
+    <span key={index}>
+    <Player name={data} />
+    </span>
+    )
+})
+
+
+  const itemList2 = [...Array(8)].map((e, i ) =>  (
+    <span key={i}>
+      <h1>Number - {testv}</h1>
+    </span>
+  ));
+
+    function Item (){
+
+      const itemList = [...Array(8)].map((e, i ) =>  (
+        <span className="" key={i}>
+          <h1 className="text-red-500 pt-4">Number = {i}</h1>
+        </span>
+      ));
+   
+
+      return itemList
+    }
+
+
+  console.log(current)
+
+
 
   const itemList = [...Array(8)].map((e, i) => 
   
-  
-  
   (
     <span key={i}>
-      <Player  name={posts.name} time="GMT 0:00"/>
+      <Player  name={posts[current].name} time="GMT 0:00"/>
     </span>
   ));
-  
-
+ 
 
 
   return (
     <div className="">
       <Header />
+      <Item />
+
 {itemList2}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full  gap-3">{itemList}</div>
@@ -106,7 +132,7 @@ export async function getStaticProps() {
   // Call an external API endpoint to get posts
   const res = await fetch('https://www.aleemrehmtulla.com/my.json')
   const pre = await res.json()
-  const posts = pre
+  const posts = pre.padawans
   const hi = pre
 
   return {
