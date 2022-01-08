@@ -5,6 +5,8 @@ import styles from "../styles/Home.module.css";
 import Header from "./components/header";
 import Player from "./components/player";
 import { useEffect, useState } from "react";
+// import data from "./data"
+
 function Home({posts}) {
   const [data, setData] = useState({
     "name": "Default product template",
@@ -52,8 +54,6 @@ function Home({posts}) {
   }
 });
 const [current, setCurrent] = useState(1);
- 
-  
     async function Aleem() {
       const res = await fetch('https://www.aleemrehmtulla.com/my.json')
       const pree = await res.json()
@@ -64,23 +64,29 @@ const [current, setCurrent] = useState(1);
     }, []);
 
 const grr = 1
-console.log(current)
-    
-console.log(data.padawans[current])
 
-console.log(data.padawans + "this")  
+
+
+// this is an array of padawan indices [1,2,3,....]
 const testv = Object.keys(data.padawans)
-  console.log(Object.keys(data.padawans))
 
-  
-  testv.map(index => {
-    // const data = data.padawans[index]
+
+console.log(data.padawans)
+let cards = []
+
+if (data) {
+  cards = testv.map(index => {
+    const PadawanData = data.padawans[index]
     return (
     <span key={index}>
-    <Player name={data} />
+      <Player name={PadawanData.name} />
     </span>
     )
-})
+  })
+}
+
+  
+  
 
 
   const itemList2 = [...Array(8)].map((e, i ) =>  (
@@ -102,7 +108,7 @@ const testv = Object.keys(data.padawans)
     }
 
 
-  console.log(current)
+
 
 
 
@@ -120,9 +126,8 @@ const testv = Object.keys(data.padawans)
     <div className="">
       <Header />
       <Item />
-
-{itemList2}
-
+{/* {itemList2} */}
+      {cards}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full  gap-3">{itemList}</div>
     </div>
   );
