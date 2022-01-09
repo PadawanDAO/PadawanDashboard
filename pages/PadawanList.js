@@ -1,8 +1,29 @@
 import React from 'react'
 import {useState} from "react"
 import Player from "./components/player";
+import { getDatabase, ref, child, get, onValue } from "firebase/database";
+const dbRef = ref(getDatabase());
+const db = getDatabase();
+
+const getName = ref(db, 'padawans/' + 1 + '/name');
+onValue(getName, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data +"yooo");
+});
+
+
+
+
 
 const PadawanList = () => {
+  const [daata, setDaata] = useState();
+  get(child(dbRef, 'padawans/')).then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      console.log("ur name = " + data[1].name);
+      setDaata(data);
+    }
+  });
     const [data, setData] = useState({
         "name": "Default product template",
     

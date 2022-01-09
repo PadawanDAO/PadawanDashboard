@@ -5,6 +5,10 @@ import Banner from "../../public/banner.png";
 function Page(props) {
   const PFP = 'https://staging-dashboard.padawandao.com/img/pfp/pfp.png';
   const PFPP = 'https://staging-dashboard.padawandao.com/img/pfp/aleem.png';
+
+  
+
+
   return   <div className="flex p-12 w-full  justify-center ">
         
   <div className="bg-black w-full" >

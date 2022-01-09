@@ -1,31 +1,29 @@
-function Blog({ posts }) {
+import axios from "axios";
+import { getStaticProps } from ".";
 
 
-  const itemList = [...Array(8)].map((e, i) => (
-    <span key={i}>
-      <h1>{i}{posts.name}</h1>
-    </span>
-  ));
+import { getDatabase, ref, onValue} from "firebase/database";
+
+const db = getDatabase();
+const getName = ref(db, 'padawans/' + 1 + '/name');
+onValue(getName, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data +"yooo");
+});
+
+
+
+
+function Home({posts}) {
+  
   return (
-    <div>
-      {itemList}
+    <div className="">
+    
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full  gap-3">
+        <h1>sss</h1>
       </div>
+    </div>
   );
 }
 
-// This function gets called at build time
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const res = await fetch('https://www.aleemrehmtulla.com/my.json')
-  const posts = await res.json()
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      posts,
-    },
-  }
-}
-
-export default Blog
+export default Home;
