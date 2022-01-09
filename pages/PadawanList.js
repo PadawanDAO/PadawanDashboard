@@ -14,37 +14,37 @@ const PadawanList = () => {
         },
           "2": {
             "name": "Eason",
-            "pfp": "../public/img/pfp/eason.png"
+            "pfp": "../public/img/pfp/pfp.png"
         },
     
         "3": {
           "name": "Jake",
-          "pfp": "../public/img/pfp/jake.png"
+          "pfp": "../public/img/pfp/pfp.png"
       },
         "4": {
           "name": "Dickson",
-          "pfp": "../public/img/pfp/dickson.png"
+          "pfp": "../public/img/pfp/pfp.png"
     
         },
         "5": {
           "name": "Amrita",
-          "pfp": "../public/img/pfp/amrita.png"
+          "pfp": "../public/img/pfp/pfp.png"
         },
         "6": {
           "name": "Zach",
-          "pfp": "../public/img/pfp/zach.png"
+          "pfp": "../public/img/pfp/pfp.png"
         },
         "7": {
           "name": "Tavia",
-          "pfp": "../public/img/pfp/zach.png"
+          "pfp": "../public/img/pfp/pfp.png"
         },
         "8": {
           "name": "Ava",
-          "pfp": "../public/img/pfp/zach.png"
+          "pfp": "../public/img/pfp/pfp.png"
         },
         "9": {
           "name": "GitE",
-          "pfp": "../public/img/pfp/zach.png"
+          "pfp": "../public/img/pfp/pfp.png"
         }
       }
     });
@@ -56,7 +56,7 @@ const PadawanList = () => {
         const PadawanData = data.padawans[index]
         return (
         <span key={index}>
-            <Player name={PadawanData.name} />
+            <Player name={PadawanData.name} pfp={PadawanData.pfp} />
         </span>
         )
         })

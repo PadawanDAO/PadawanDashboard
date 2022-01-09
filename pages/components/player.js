@@ -1,8 +1,9 @@
 import axios from "axios";
 import Image from "next/image";
 import Banner from "../../public/banner.png";
-import PFP from '../../public/pfp.png';
+// import PFP from '../../public/pfp.png';
 function Page(props) {
+  const PFP = '../../public/pfp.png';
   return   <div className="flex p-12 w-full  justify-center ">
         
   <div className="bg-black w-full" >
