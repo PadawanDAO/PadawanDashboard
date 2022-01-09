@@ -23,7 +23,7 @@ export default function Header() {
           </a>
         </Link>
 
-        <Link href="/discord">
+        <Link href="https://discord.com/invite/HM97NeDJ5P">
           <a className="link link-underline link-underline-black text-black">
             Discord
           </a>
