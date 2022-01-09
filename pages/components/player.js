@@ -3,17 +3,18 @@ import Image from "next/image";
 import Banner from "../../public/banner.png";
 // import PFP from '../../public/pfp.png';
 function Page(props) {
-  const PFP = '../../public/pfp.png';
+  const PFP = 'https://staging-dashboard.padawandao.com/img/pfp/pfp.png';
+  const PFPP = 'https://staging-dashboard.padawandao.com/img/pfp/aleem.png';
   return   <div className="flex p-12 w-full  justify-center ">
         
   <div className="bg-black w-full" >
 
   <div className="">
-  <Image src={Banner} alt="logo" className="w-fit"/>
+  <Image src={PFPP} width={500} height={100} alt="logo" className="w-full"/>
 
   <div className="flex justify-center -m-16 ">
   <div className="w-24  ">
-  <Image src={PFP} alt="pfp" className="rounded-full"  />
+  <Image src={PFP} alt="pfp" width={100} height={100} className="rounded-full"  />
   </div>
   </div>
   </div>

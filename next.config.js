@@ -3,4 +3,7 @@ module.exports = {
   experimental: {
     urlImports: ['https://aleemrehmtulla.com/my.json'],
   },
+  images: {
+    domains: ['staging-dashboard.padawandao.com'],
+  },
 }
