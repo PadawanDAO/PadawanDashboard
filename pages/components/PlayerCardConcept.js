@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "../../styles/Player.module.css"
 import Banner from "../../public/banner.png";
-
+import Image from "next/image"
 
 
 
@@ -20,9 +20,13 @@ const PlayerCard = ({name, timeZone, pfpURL, skills, totalXP}) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.CardHeaderWrapper}>
-                <img className = {styles.banner} src = {Banner.src}/>
+                <div className={styles.banner}>
+                    <Image alt =""  src = {Banner.src} layout='fill'/>
+                </div>
                 <div className={styles.pfpWrapper}>
-                    <img className = {styles.pfp} src = {pfpURL} />   
+                    <div className = {styles.pfp}>
+                        <Image alt = "" src = {pfpURL} width={128} height={128}/>   
+                    </div>
                 </div>
             </div>
             <div className={styles.CardBody}>
@@ -44,7 +48,7 @@ const PadawanContact = () => {
         <div className={styles.infoWrapper}>
             <p>Contact</p>
             <div className={styles.contactsWrapper}>
-            {Contacts.map(c => <div className={styles.contactBlob}>{c}</div>)}
+            {Contacts.map(c => <div key={c} className={styles.contactBlob}>{c}</div>)}
             </div>
         </div>
     )
@@ -57,7 +61,7 @@ const PadawanSkills = () => {
         <div className={styles.infoWrapper}>
             <p>Skills</p>
             <div className={styles.skillsWrapper}>
-            {Skills.map(s => <div className={styles.skillBlob}>{s}</div>)}
+            {Skills.map(s => <div key ={s} className={styles.skillBlob}>{s}</div>)}
             </div>
         </div>
     )

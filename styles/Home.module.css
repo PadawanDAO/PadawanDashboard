@@ -129,6 +129,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
+  padding: 4%
   /* display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: min(4rem, 64px);
