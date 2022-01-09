@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from "react"
 import Player from "./components/player";
 import { getDatabase, ref, child, get, onValue } from "firebase/database";
-import { GetPadawans } from '../FirebaseUtils';
+import { GetPadawans, GetPFP } from '../FirebaseUtils';
 const dbRef = ref(getDatabase());
 const db = getDatabase();
 
@@ -19,85 +19,28 @@ const getName = ref(db, 'padawans/' + 1 + '/name');
 
 const PadawanList = () => {
   const [data, setData] = useState();
-  // get(child(dbRef, 'padawans/')).then((snapshot) => {
-  //   if (snapshot.exists()) {
-  //     const data = snapshot.val();
-  //     console.log("ur name = " + data[1].name);
-  //     setDaata(data);
-  //   }
-  // });
-
+  const [pfp, setPfp] = useState();
   useEffect(() => {
     GetPadawans()
       .then(d => setData(d))
       .catch(err => console.log(err))
-  }, [GetPadawans])
+  }, [])
+  useEffect(() => {
+    GetPFP()
+      .then(d => setPfp(d))
+      .catch(err => console.log(err))
+  }, [])
+  console.log(pfp + "this is state");
 
-
-    // const [data, setData] = useState({
-    //     "name": "Default product template",
-    
-    //     "padawans": {
-    
-    //       "1": {
-    //         "name": "Aleem",
-    //         "pfp": "../public/img/pfp/aleem.png",
-    //         "time": "EST"
-    //     },
-    //       "2": {
-    //         "name": "Eason",
-    //         "pfp": "../public/img/pfp/pfp.png",
-    //         "time": "EST"
-    //     },
-    
-    //     "3": {
-    //       "name": "Jake",
-    //       "pfp": "../public/img/pfp/pfp.png",
-    //       "time": "EST"
-
-    //   },
-    //     "4": {
-    //       "name": "Dickson",
-    //       "pfp": "../public/img/pfp/pfp.png",
-    //       "time": "EST"
-    
-    //     },
-    //     "5": {
-    //       "name": "Amrita",
-    //       "pfp": "../public/img/pfp/pfp.png",
-    //       "time": "PST"
-    //     },
-    //     "6": {
-    //       "name": "Zach",
-    //       "pfp": "../public/img/pfp/pfp.png",
-    //       "time": "PST"
-    //     },
-    //     "7": {
-    //       "name": "Tavia",
-    //       "pfp": "../public/img/pfp/pfp.png",
-    //       "time": "PST"
-    //     },
-    //     "8": {
-    //       "name": "Ava",
-    //       "pfp": "../public/img/pfp/pfp.png",
-    //       "time": "idk london lol"
-    //     },
-    //     "9": {
-    //       "name": "GitE",
-    //       "pfp": "../public/img/pfp/pfp.png",
-    //       "time": "IST"
-    //     }
-    //   }
-    // });
-        
     let cards = []
     if (data) {
         const PadawanKeys = Object.keys(data)
         cards = PadawanKeys.map(index => {
+        const pfpp = pfp+ [index] + ".jpeg"
         const PadawanData = data[index]
         return (
         <span key={index}>
-            <Player name={PadawanData.name} time={PadawanData.time} pfp={PadawanData.pfp} />
+            <Player name={PadawanData.name} time={PadawanData.time} pfp={pfpp} bg={PadawanData.pfp} />
         </span>
         )
         })

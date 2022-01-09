@@ -1,6 +1,8 @@
 import { async } from '@firebase/util';
 import { initializeApp } from 'firebase/app';
 import { get, set, ref , getDatabase} from 'firebase/database';
+import { getStorage, getDownloadURL } from "firebase/storage";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyAHhDR6w6sUoOznoB-IyW89Xo3UKqSTEGY",
@@ -26,3 +28,12 @@ export async function GetPadawans() {
     return padawans
 }
 
+export async function GetPFP() {
+    
+const picture = "https://xpgcvlzgtrybnonxvfam.supabase.in/storage/v1/object/public/bucket/pfp/"
+
+return picture
+
+
+    
+}

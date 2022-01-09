@@ -6,7 +6,7 @@ function Page(props) {
   const PFP = 'https://staging-dashboard.padawandao.com/img/pfp/pfp.png';
   const PFPP = 'https://staging-dashboard.padawandao.com/img/pfp/aleem.png';
 
-  
+
 
 
   return   <div className="flex p-12 w-full  justify-center ">
@@ -18,7 +18,7 @@ function Page(props) {
 
   <div className="flex justify-center -m-16 ">
   <div className="w-24  ">
-  <Image src={PFP} alt="pfp" width={100} height={100} className="rounded-full"  />
+  <Image src={props.pfp} alt="pfp" width={100} height={100} className="rounded-full"  />
   </div>
   </div>
   </div>
