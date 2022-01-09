@@ -41,8 +41,11 @@ const PlayerCard = ({name, timeZone, pfpURL, skills, totalXP}) => {
 const PadawanContact = () => {
     const Contacts = ["GitHub", "Ethereum", "Twitter", "Discord"]
     return (
-        <div className={styles.contactsWrapper}>
+        <div className={styles.infoWrapper}>
+            <p>Contact</p>
+            <div className={styles.contactsWrapper}>
             {Contacts.map(c => <div className={styles.contactBlob}>{c}</div>)}
+            </div>
         </div>
     )
 }
@@ -51,8 +54,11 @@ const PadawanSkills = () => {
     const Skills = ["Project Management", "Backend Development", "Blockchain", "Frontend Development"]
 
     return (
-        <div className={styles.skillsWrapper}>
+        <div className={styles.infoWrapper}>
+            <p>Skills</p>
+            <div className={styles.skillsWrapper}>
             {Skills.map(s => <div className={styles.skillBlob}>{s}</div>)}
+            </div>
         </div>
     )
 }

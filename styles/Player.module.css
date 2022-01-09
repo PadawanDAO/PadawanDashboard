@@ -1,13 +1,25 @@
-
-
 .wrapper {
     border-radius: 16px;
     box-shadow: 0 0 16px 1px grey;
-    width: 100%;
     height: 100%;
-    margin: 3rem;
+    width: 25vw;
+    margin-bottom: 2rem;
+    margin: 1rem;
+    padding: 0.5rem;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.15);
+}
+
+@media only screen and (min-width: 500px) {
+    .wrapper {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .wrapper {
+        width: 90vw;
+    }
 }
 
 .pfp {
@@ -18,7 +30,8 @@
 }
 
 .banner {
-    position: relative;
+    /* position: relative; */
+    width: 100%
 }
 
 .pfpWrapper {
@@ -41,9 +54,48 @@
     color:white;
     font-weight: 600;
     text-align: center;
-
+    font-size: 1.5rem;
 }
 
 .CardBody {
     padding-top: 96px;
+    display:flex;
+    flex-direction: column;
+}
+
+.skillsWrapper, .contactsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-self: flex-start;
+    padding: -0.25rem
+}
+
+.skillBlob, .contactBlob {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0.5rem;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 0.75rem;
+
+}
+
+.skillBlob { background-color: tomato;}
+.contactBlob { background-color: blue;}
+
+.infoWrapper {
+    color:white;
+    text-align: center;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    margin: 1rem 0 1rem 0
+}
+.infoWrapper > p {
+    font-weight: 700;
+    align-self: flex-start;
+    margin-left: 0.5rem;
 }
