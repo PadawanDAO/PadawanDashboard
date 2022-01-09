@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from "react"
 import Player from "./components/player";
 
-export const PadawanList = () => {
+const PadawanList = () => {
     const [data, setData] = useState({
         "name": "Default product template",
     
@@ -63,5 +63,6 @@ export const PadawanList = () => {
   }
 
   return cards
-
 }
+
+export default PadawanList
