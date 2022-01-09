@@ -50,7 +50,6 @@ export const PadawanList = () => {
     });
         
     let cards = []
-    console.log(data)
     if (data) {
         const PadawanKeys = Object.keys(data.padawans)
         cards = PadawanKeys.map(index => {
