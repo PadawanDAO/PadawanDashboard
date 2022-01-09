@@ -4,31 +4,9 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Header from "./components/header";
 import { useEffect, useState } from "react";
-import { PadawanList } from "./PadawanList";
-// import data from "./data"
+import PadawanList from "./PadawanList";
 
 function Home({posts}) {
-  
-
-
-
-
-
-    // function Item (){
-
-    //   const itemList = [...Array(8)].map((e, i ) =>  (
-    //     <span className="" key={i}>
-    //       <h1 className="text-red-500 pt-4">Number = {i}</h1>
-    //     </span>
-    //   ));
-   
-
-    //   return itemList
-    // }
-
- 
-
-
   return (
     <div className="">
       <Header />
