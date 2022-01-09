@@ -8,9 +8,9 @@ import PadawanList from "./PadawanList";
 
 function Home({posts}) {
   return (
-    <div className="">
+    <div className={styles.HomepageWrapper}>
       <Header />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full  gap-3">
+      <div className={styles.PadawanListWrapper}>
         <PadawanList />
       </div>
     </div>

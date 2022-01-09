@@ -3,6 +3,7 @@ import {useState, useEffect} from "react"
 import Player from "./components/player";
 import { getDatabase, ref, child, get, onValue } from "firebase/database";
 import { GetPadawans, GetPFP } from '../FirebaseUtils';
+import PlayerCard from './components/PlayerCardConcept';
 const dbRef = ref(getDatabase());
 const db = getDatabase();
 
@@ -36,11 +37,13 @@ const PadawanList = () => {
     if (data) {
         const PadawanKeys = Object.keys(data)
         cards = PadawanKeys.map(index => {
-        const pfpp = pfp+ [index] + ".jpeg"
+        const pfpp = pfp + [index] + ".jpeg"
         const PadawanData = data[index]
+        const {name, time} = PadawanData
         return (
         <span key={index}>
-            <Player name={PadawanData.name} time={PadawanData.time} pfp={pfpp} bg={PadawanData.pfp} />
+            <PlayerCard pfpURL={pfpp} name = {name} timeZone={time}/>
+            {/* <Player name={PadawanData.name} time={PadawanData.time} pfp={pfpp} bg={PadawanData.pfp} /> */}
         </span>
         )
         })

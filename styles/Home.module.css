@@ -114,3 +114,26 @@
     flex-direction: column;
   }
 }
+
+.PadawanListWrapper {
+  background-image: url("../public/Background.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow:scroll;
+  column-gap: min(4rem, 64px);
+  row-gap: min(4rem, 64px);
+}
+
+.PadawanListWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.HomepageWrapper::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,49 @@
+
+
+.wrapper {
+    border-radius: 16px;
+    box-shadow: 0 0 16px 1px grey;
+    width: 100%;
+    height: 100%;
+    margin: 3rem;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.pfp {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.banner {
+    position: relative;
+}
+
+.pfpWrapper {
+    position: relative;
+    width: 100%;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+}
+
+.CardHeaderWrapper {
+    align-items: center;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CardName {
+    color:white;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+.CardBody {
+    padding-top: 96px;
+}
