@@ -31,7 +31,7 @@ export async function GetPadawans() {
 }
 
 export async function AddPadawan(padawan) {
-    const dbref = ref(database, `test_padawan/${padawan.ETHaddress}`)
+    const dbref = ref(database, `test_padawan/${"ulao"}`)
 
     const result = await set(dbref, padawan)
 }

@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import Header from "./components/header";
 import { useEffect, useState } from "react";
 import PadawanList from "./PadawanList";
+import { ConnectWallet } from "@3rdweb/react";
 
 function Home({posts}) {
   return (
@@ -13,6 +14,7 @@ function Home({posts}) {
       <div className="grid grid-cols-1 lg:grid-cols-3  tablet:grid-cols-2 w-full  gap-3">
       
         <PadawanList />
+
       </div>
     </div>
   );

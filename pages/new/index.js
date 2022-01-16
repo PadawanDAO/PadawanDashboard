@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import { uploadFile, AddPadawan } from '../../FirebaseUtils'
-import { TextField, Button } from "@mui/material"
+import { input, Button } from "@mui/material"
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 import { toast } from "react-toastify"
+import { ConnectWallet } from "@3rdweb/react";
 toast.configure()
 
 // Name 
@@ -22,9 +24,7 @@ class PadawanForm extends Component {
         timezone: "",
         organization: "",
         about: "",
-        ETHaddress: "",
         twitter: "",
-        github: "",
         file: null,
     }   
 
@@ -36,11 +36,9 @@ class PadawanForm extends Component {
 
     setAbout = (e) => this.setState({about: e.target.value})
 
-    setEthaddress = (e) => this.setState({ETHaddress: e.target.value})
 
     setTwitter = (e) => this.setState({twitter: e.target.value})
 
-    setGithub = (e) => this.setState({github: e.target.value})
 
     setFile = (e) => this.setState({file: e.target.files[0]})
 
@@ -51,15 +49,15 @@ class PadawanForm extends Component {
             timezone, 
             organization, 
             about, 
-            ETHaddress,
             twitter,
-            github,
          } = this.state
 
         if (!name) return toast.error("Please enter a name")
         // if (!timezone) return toast.error("Please enter your timezone")
         if (!about) return toast.error("Please enter an about profile")
         if (!this.state.file) return toast.error("Please upload a profile picture")
+        if (twitter.includes("@")) return toast.error('Dont add in "@"!')
+        toast.success("Submitting...")
 
         const URL = await uploadFile(this.state.file)
 
@@ -69,9 +67,7 @@ class PadawanForm extends Component {
             timezone, 
             organization, 
             about, 
-            ETHaddress,
             twitter,
-            github,
             URL,
          }
 
@@ -82,41 +78,43 @@ class PadawanForm extends Component {
 
         return (
         <React.Fragment>
+            
             <div className="form-wrapper">
+            
                 <div>
+                    <ConnectWallet />
                     <div className="input-wrapper">
                         <label>Name</label>
-                        <TextField variant ="standard" onChange = {this.setName} placeholder='Your Name' />
+                        <input variant ="standard" onChange = {this.setName} placeholder='Your Name' />
                     </div>
                     <div className="input-wrapper">
                         <label>Organization</label>
-                        <TextField variant ="standard" onChange = {this.setOrganization} placeholder='organization' />
+                        <input variant ="standard" onChange = {this.setOrganization} placeholder='Organization' />
                     </div>
 
                     <div className="input-wrapper">
                         <label>About</label>
-                        <TextField variant ="standard" onChange = {this.setAbout} placeholder='tell us about yourself' />
+                        <input multiline inputProps={{maxLength:200}} rows="5" variant ="standard" onChange = {this.setAbout} placeholder='Tell us about yourself' />
                     </div>
 
-                    <div className="input-wrapper">
-                        <label>ETHaddress</label>
-                        <TextField variant ="standard" onChange = {this.setEthaddress} placeholder='event' />
-                    </div>
 
                     <div className="input-wrapper">
-                        <label>Twitter</label>
-                        <TextField variant ="standard" onChange = {this.setTwitter} placeholder='Twitter @' />
+                        <label>Twitter (no @)</label>
+                        <input variant ="standard" onChange = {this.setTwitter} placeholder='aleemrehmtulla' />
+                    </div>
+                    <div className="input-wrapper">
+                        <label className='pb-2'>Upload Profile Picture</label>
+                        <input className="block w-full text-sm text-slate-500
+      file:mr-4 file:py-2 file:px-4
+      file:rounded-full file:border-2
+      file:border-black file:duration-500 file:cursor-pointer
+      file:text-sm file:font-semibold
+      file:bg-black file:text-white
+      hover:file:bg-white hover:file:text-black " onChange={this.setFile} type = "file" accept="image/png, image/jpeg, image/jpg" />
                     </div>
 
-                    <div className="input-wrapper">
-                        <label>Github</label>
-                        <TextField variant ="standard" onChange = {this.setGithub} placeholder='Github' />
-                    </div>
-                    <div className="input-wrapper">
-                        <label>Upload Profile Picture</label>
-                        <input variant ="standard" onChange = {this.setFile} type = "file" accept="image/" />
-                    </div>
-                    <Button variant='contained' className="padawan-form-submit-btn" onClick = {this.SubmitForm}>Submit</Button>
+                    <button className='bg-black duration-500 border-2 rounded-full border-black text-white px-8 py-1.5 hover:text-black hover:bg-white'  onClick = {this.SubmitForm}>Submit</button>
+                    
                 </div>
             </div>
         </React.Fragment>

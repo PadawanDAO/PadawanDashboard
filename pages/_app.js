@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css';
+import { ThirdwebProvider } from '@3rdweb/react';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, onValue } from "firebase/database";
 // Set the configuration for your app
@@ -21,7 +22,19 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  const supportedChainIds = [1, 4, 137];
+  const connectors = {
+    injected: {},
+    walletconnect: {}
+  };
+  return (
+    <ThirdwebProvider 
+    supportedChainIds={supportedChainIds}
+    connectors={connectors}
+  >
+  <Component {...pageProps} />
+  </ThirdwebProvider>
+  );
 }
 
 export default MyApp

@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@3rdweb/react": "^1.8.1",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.8",
     "axios": "^0.24.0",
