@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import { uploadFile } from '../../FirebaseUtils'
+import { TextField, Button } from "@mui/material"
+import { toast } from "react-toastify"
+toast.configure()
 
 // Name 
 // Age
@@ -15,12 +18,11 @@ class PadawanForm extends Component {
 
     state = {
         name: "",
-        birhday: null,
-        PFP: null,
+        birthday: null,
         timezone: "",
         organization: "",
         about: "",
-        event: "",
+        ETHaddress: "",
         twitter: "",
         github: "",
         file: null,
@@ -34,39 +36,87 @@ class PadawanForm extends Component {
 
     setAbout = (e) => this.setState({about: e.target.value})
 
-    setEvent = (e) => this.setState({event: e.target.value})
+    setEthaddress = (e) => this.setState({ETHaddress: e.target.value})
 
     setTwitter = (e) => this.setState({twitter: e.target.value})
 
     setGithub = (e) => this.setState({github: e.target.value})
 
+    setFile = (e) => this.setState({file: e.target.files[0]})
+
+    SubmitForm = async () => {
+        const {
+            name, 
+            birthday, 
+            timezone, 
+            organization, 
+            about, 
+            ETHaddress,
+            twitter,
+            github,
+         } = this.state
+
+        if (!name) return toast.error("Please enter a name")
+        // if (!timezone) return toast.error("Please enter your timezone")
+        if (!about) return toast.error("Please enter an about profile")
+        if (!this.state.file) return toast.error("Please upload a profile picture")
+
+        const URL = await uploadFile(this.state.file)
+
+        console.log({
+            name, 
+            birthday, 
+            timezone, 
+            organization, 
+            about, 
+            ETHaddress,
+            twitter,
+            github,
+            URL,
+         }
+        )
+    }
 
     render() {
+
         return (
         <React.Fragment>
-            <div className="input-wrapper">
-                <label>Organization</label>
-                <input onChange = {this.setOrganization} placeholder='organization' />
-            </div>
+            <div className="form-wrapper">
+                <div>
+                    <div className="input-wrapper">
+                        <label>Name</label>
+                        <TextField variant ="standard" onChange = {this.setName} placeholder='Your Name' />
+                    </div>
+                    <div className="input-wrapper">
+                        <label>Organization</label>
+                        <TextField variant ="standard" onChange = {this.setOrganization} placeholder='organization' />
+                    </div>
 
-            <div className="input-wrapper">
-                <label>About</label>
-                <input onChange = {this.setAbout} placeholder='tell us about yourself' />
-            </div>
+                    <div className="input-wrapper">
+                        <label>About</label>
+                        <TextField variant ="standard" onChange = {this.setAbout} placeholder='tell us about yourself' />
+                    </div>
 
-            <div className="input-wrapper">
-                <label>Event</label>
-                <input onChange = {this.setEvent} placeholder='event' />
-            </div>
+                    <div className="input-wrapper">
+                        <label>ETHaddress</label>
+                        <TextField variant ="standard" onChange = {this.setEthaddress} placeholder='event' />
+                    </div>
 
-            <div className="input-wrapper">
-                <label>Twitter</label>
-                <input onChange = {this.setTwitter} placeholder='Twitter @' />
-            </div>
+                    <div className="input-wrapper">
+                        <label>Twitter</label>
+                        <TextField variant ="standard" onChange = {this.setTwitter} placeholder='Twitter @' />
+                    </div>
 
-            <div className="input-wrapper">
-                <label>Github</label>
-                <input onChange = {this.setGithub} placeholder='Github' />
+                    <div className="input-wrapper">
+                        <label>Github</label>
+                        <TextField variant ="standard" onChange = {this.setGithub} placeholder='Github' />
+                    </div>
+                    <div className="input-wrapper">
+                        <label>Upload Profile Picture</label>
+                        <input variant ="standard" onChange = {this.setFile} type = "file" accept="image/" />
+                    </div>
+                    <Button variant='contained' className="padawan-form-submit-btn" onClick = {this.SubmitForm}>Submit</Button>
+                </div>
             </div>
         </React.Fragment>
         )
