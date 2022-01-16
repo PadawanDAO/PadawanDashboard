@@ -1,7 +1,7 @@
 import { async } from '@firebase/util';
 import { initializeApp } from 'firebase/app';
-import { get, set, ref , getDatabase} from 'firebase/database';
-import { getStorage, getDownloadURL } from "firebase/storage";
+import { get, set, ref, getDatabase} from 'firebase/database';
+import { getStorage, getDownloadURL, uploadBytes, ref as sRef } from "firebase/storage";
 
 
 
@@ -19,6 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const database = getDatabase(app);
+const FirebaseBucket = getStorage(app)
 
 
 export async function GetPadawans() {
@@ -31,6 +32,19 @@ export async function GetPadawans() {
 
 export async function GetPFP() {
     const picture = "https://xpgcvlzgtrybnonxvfam.supabase.in/storage/v1/object/public/bucket/pfp/"
-
     return picture    
+}
+
+export async function uploadFile(file) {
+
+    // dis function uploads files dawg
+    const storageRef = sRef(FirebaseBucket, `testing/${file.name}`);
+
+    await uploadBytes(storageRef, file).then( async (snapshot) => {
+        console.log(snapshot)
+    });
+
+    const URL = await getDownloadURL(storageRef, `testing/${file.name}`)
+
+    return URL 
 }
