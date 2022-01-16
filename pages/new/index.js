@@ -104,19 +104,18 @@ function PadawanForm() {
                     </div>
 
                     <div className="input-wrapper">
-                        <label>Skills (seperate 4 by comma)</label>
-                        <input type="text" onChange = {setSkills} placeholder='Figma, Next.js, Docs, GMing' />
+                        <label>Skills</label>
+                            <ReactTagInput 
+                            tags={skills} 
+                            placeholder="Type and press enter"
+                            maxTags={5}
+                            editable={true}
+                            removeOnBackspace={true}
+                            readOnly={false}
+                            onChange={SetSkills} />
                     </div>
 
-                    <ReactTagInput 
-                        tags={skills} 
-                        placeholder="Type and press enter"
-                        maxTags={10}
-                        editable={true}
-                        readOnly={false}
-                        removeOnBackspace={true}
-                        onChange={SetSkills} />
-
+                   
 
                     <div className="input-wrapper">
                         <label>Timezone (3 letters)</label>
