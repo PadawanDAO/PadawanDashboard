@@ -4,7 +4,10 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    screens: {
+      'tablet': '816px',
+      'lg': '1250px',
+    },
   },
   plugins: [],
 }

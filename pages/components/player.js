@@ -1,144 +1,97 @@
-import axios from "axios";
 import Image from "next/image";
-import Banner from "../../public/banner.png";
-// import PFP from '../../public/pfp.png';
-function Page(props) {
-  const PFP = 'https://staging-dashboard.padawandao.com/img/pfp/pfp.png';
-  const PFPP = 'https://staging-dashboard.padawandao.com/img/pfp/aleem.png';
+import Link from "next/link";
 
+function Home(props) {
+  const PFPP = "https://staging-dashboard.padawandao.com/banner.png";
+  const PFP = "https://staging-dashboard.padawandao.com/img/pfp/aleem.png";
+  return (
+    <div className="flex justify-center p-20">
+      <div className="border-4 border-black rounded-2xl w-fit ">
+        {/* header and pfp */}
+        <div className="relative pb-16">
+          <div className="">
+            <Image
+              src={PFPP}
+              width={500}
+              height={100}
+              alt="logo"
+              className="w-full rounded-t-xl"
+            />
+          </div>
+          <div className="flex justify-center  ">
+            <div className=" md:w-24 absolute top-8 ">
+              <Image
+                src={PFP}
+                alt="pfp"
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
+            </div>
+          </div>
+        </div>
 
+        <div className="text-center font-semibold text-xl pb-2">
+          <h1>Aleem Rehmtulla | 16y/o | EST</h1>
+        </div>
+        <div className="pl-8 pr-8">
+          <div className="flex  space-x-2 justify-center pb-4">
+            <Tag value="Denver Padawan" />
+            <Tag value="Balance.io" />
+            <Social />
+          </div>
 
+          <div className="pb-4">
+            <h1 className="text-3xl font-semibold pb-1">About Me</h1>
+            <p>
+              {" "}
+              Hey! I contribute @ project and am super stoked for future of
+              protocol. This is some more description on me, as aleem refused to
+              grab some lorem ipsum thinking hed do a legit desc, but didnt{" "}
+            </p>
+          </div>
 
-  return   <div className="flex p-12 w-full  justify-center ">
-        
-  <div className="bg-black w-full" >
+          <div className="">
+            <h1 className="text-3xl font-semibold">Skills</h1>
 
-  <div className="">
-  <Image src={PFPP} width={500} height={100} alt="logo" className="w-full"/>
+            <div className="flex space-x-4 pt-2">
+              <Tag value="GMing" />
+              <Tag value="Balance.io" />
+              <Tag value="Figma" />
+              <Tag value="Next.js" />
+            </div>
+          </div>
+        </div>
 
-  <div className="flex justify-center -m-16 ">
-  <div className="w-24  ">
-  <Image src={props.pfp} alt="pfp" width={100} height={100} className="rounded-full"  />
-  </div>
-  </div>
-  </div>
-  
-  <div className="p-8">
-
-
-
-
-
-  <div className="">
-  <h1 className="text-white pt-8 text-3xl text-center" >
- 
-  </h1>
-  </div>
-
-  <div className="flex pt-4  place-content-center gap-2  ">
-  <Tags name="Hi"/>
-  <Tags name="Diamond"/>
-  <Tags name="Total XP: 3186"/>
-  </div>
-
-
-  <div className="flex space-x-4 pt-4 justify-center " >
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-  </svg>
-
-  <p className="text-white font-bold">{props.name}</p>
-
-  <p className="text-white">{props.time}</p>
-  </div>
-
-  <div className="pt-4">
-  <p className="text-white pb-2">
-      Skills
-  </p>
-  <div className="grid grid-cols-2 gap-2">
-  <Skills name="Project Managment"/>
-  <Skills name="Backend Development"/>
-  <Skills name="Frontend Development"/>
-  <Skills name="Blockchain"/>
-  </div>
-  </div>
-
-  <div className="pt-4">
-  <p className="text-white">Contact</p>
-  <div className="grid grid-cols-2 gap-2 pt-2 w-full">
-  <Contact name="Github"/>
-  <Contact name="Ethereum"/>
-  <Contact name="Twitter"/>
-  <Contact name="Discord"/>
-  </div>
+        <div className="pb-12"></div>
       </div>
-
-
-  
-
-
-
-  </div>
-
-
-</div>
-
-</div>
-}
-
-Page.getInitialProps = async (ctx) => {
-    // const res = await fetch('https://api.github.com/repos/vercel/next.js')
-    const res = await fetch('https://www.aleemrehmtulla.com/my.json')
-    const json = await res.json()
-    return { data: json.padawans }
-  }
-export default Page
-
-
-  
-
-function Tags(props, data) {
-  return(
-
-      
-          <div className="bg-emerald-500 rounded-md  w-fit p-2">
-              <h1 className="text-white text-sm text-center">
-              {props.name}
-              </h1>
-              </div>
- 
-
+    </div>
   );
 }
 
-
-
-function Skills(props) {
-  return(
-
-      <div>
-          <div className="bg-blue-500 rounded-md  h-full text-center p-2">
-              <h1 className="text-white text-sm text-center">
-              {props.name}
-              </h1>
-              </div>
-      </div>
-
+function Tag(props) {
+  return (
+    <div className="bg-black p-2 w-fit rounded-xl">
+      <p className="text-white">{props.value}</p>
+    </div>
   );
 }
 
-function Contact(props) {
-  return(
-
-      <div>
-          <div className="bg-red-800 rounded-md  w-full p-2">
-              <h1 className="text-white text-sm text-center">
-              {props.name}
-              </h1>
-              </div>
-      </div>
-
+function Social(props) {
+  return (
+    <div className="hover:cursor-pointer">
+      <Link href={"https://twitter.com/" + "aleemrehmtulla"} passHref>
+        <svg
+          fill="#000000"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 50 50"
+          width="40px"
+          height="40px"
+        >
+          <path d="M50.061,10.438c-1.846,0.818-3.826,1.369-5.908,1.62c2.125-1.273,3.757-3.29,4.523-5.688c-1.986,1.177-4.19,2.033-6.531,2.493c-1.874-2-4.547-3.247-7.504-3.247c-5.68,0-10.284,4.604-10.284,10.282c0,0.805,0.092,1.589,0.269,2.343C16.08,17.812,8.502,13.718,3.429,7.497c-0.885,1.522-1.391,3.289-1.391,5.172c0,3.567,1.812,6.713,4.574,8.56c-1.688-0.054-3.271-0.517-4.657-1.288c0,0.044,0,0.086,0,0.131c0,4.984,3.544,9.134,8.245,10.084c-0.86,0.236-1.769,0.36-2.707,0.36c-0.664,0-1.309-0.064-1.938-0.186c1.313,4.081,5.108,7.06,9.607,7.143c-3.517,2.757-7.951,4.399-12.77,4.399c-0.833,0-1.649-0.048-2.452-0.144c4.548,2.919,9.956,4.619,15.762,4.619c18.915,0,29.26-15.668,29.26-29.252c0-0.448-0.011-0.894-0.03-1.332C46.94,14.313,48.684,12.5,50.061,10.438z" />
+        </svg>
+      </Link>
+    </div>
   );
 }
-
+export default Home;
