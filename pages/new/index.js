@@ -6,40 +6,36 @@ import { toast } from "react-toastify"
 import { ConnectWallet } from "@3rdweb/react";
 import { useWeb3 } from "@3rdweb/hooks";
 import { useState } from "react";
+import { WithContext as ReactTagInput } from 'react-tag-input';
 toast.configure()
 
-// Name 
-// Age
-// Profile Picture
-// Timezone
-// Organization 
-// About me section
-// Which event they went to
-// Twitter 
-// Github 
-
-function hi() {
 
 
-}
 
 function PadawanForm() {
 
 
-    const [name, SetName] = useState();
-    const [birthday, SetBirthday] = useState();
-    const [timezone, SetTimezone] = useState();
-    const [organization, SetOrganization] = useState();
-    const [about, SetAbout] = useState();
-    const [twitter, SetTwitter] = useState();
+    const [name, SetName] = useState("jdj");
+    const [birthday, SetBirthday] = useState("jdj");
+    const [timezone, SetTimezone] = useState("jdj");
+    const [organization, SetOrganization] = useState("jdj");
+    const [about, SetAbout] = useState("jdj");
+    const [twitter, SetTwitter] = useState("jdj");
     const [file, SetFile] = useState();
+    const [skills, SetSkills] = useState("jdj");
+    const [tags, SetTags] = useState([]);
+    const { address, chainId, provider } = useWeb3();
 
 
     const setName = (e) => {SetName(e.target.value)}
 
+    const setTags = (e) => {SetTags(e)}
+
     const setBirthday = (e) => {SetBirthday(e.target.value)}
 
     const setTimezone = (e) => {SetTimezone(e.target.value)}
+
+    const setSkills = (e) => {SetSkills(e.target.value)}
 
     const setOrganization = (e) => {SetOrganization(e.target.value)}
 
@@ -49,16 +45,23 @@ function PadawanForm() {
 
     const setFile = (e) => {SetFile(e.target.files[0])}
 
-
+   console.log(tags);
+    
     const SubmitForm = async () => {
 
-         
+        if (name=="jdj") return toast.error("Please enter a name")
+        if (birthday=="jdj") return toast.error("Please enter your birthday")
+        if (timezone=="jdj") return toast.error("Please enter your timezone")
+        // if (organization=="jdj") return toast.error("Please enter your organization")
+        if (about=="jdj") return toast.error("Please enter your about section")
+        if (twitter=="jdj") return toast.error("Please enter your twitter")
+        if (!address) return toast.error("Please connect to a wallet")
 
-        if (!name) return toast.error("Please enter a name")
-        // if (!timezone) return toast.error("Please enter your timezone")
-        if (!about) return toast.error("Please enter an about profile")
-        if (!file) return toast.error("Please upload a profile picture")
+
         if (twitter.includes("@")) return toast.error('Dont add in "@"!')
+        if (twitter.includes("https://")) return toast.error("Don't use a URL!")
+        if (skills.includes(",,,,,")) return toast.error("Don't use a URL!")
+
         toast.success("Submitting...")
 
         const URL = await uploadFile(file)
@@ -68,6 +71,8 @@ function PadawanForm() {
             birthday, 
             timezone, 
             organization, 
+            address,
+            skills,
             about, 
             twitter,
             URL,
@@ -80,7 +85,7 @@ function PadawanForm() {
         return (
         <React.Fragment>
             <div className="">
-            <div className='  flex justify-end m-3 '>
+            <div className='  flex justify-end m-5 '>
                 <ConnectWallet />
             </div>
             <div className="-mt-20">
@@ -89,16 +94,34 @@ function PadawanForm() {
                 <div>
                     
                     <div className="input-wrapper">
-                        <label>h</label>
+                        <label>Full Name (anon is okay)</label>
                         <input variant ="standard" onChange = {setName} placeholder='Your Name' />
                     </div>
                     <div className="input-wrapper">
-                        <label>Organization</label>
-                        <input variant ="standard" onChange = {setOrganization} placeholder='Organization' />
+                        <label>Birthday</label>
+                        <input type="date" onChange = {setBirthday} placeholder='Organization' />
                     </div>
 
                     <div className="input-wrapper">
-                        <label>About</label>
+                        <label>Skills (seperate 4 by comma)</label>
+                        <input type="text" onChange = {setSkills} placeholder='Figma, Next.js, Docs, GMing' />
+                    </div>
+
+                    <ReactTagInput 
+placeholder="Type and press enter"
+editable={true}
+readOnly={false}
+removeOnBackspace={true}
+onChange={setTags} />
+
+
+                    <div className="input-wrapper">
+                        <label>Timezone (3 letters)</label>
+                        <input variant ="standard" onChange = {setTimezone} placeholder='EST' />
+                    </div>
+
+                    <div className="input-wrapper">
+                        <label>About (250 character max)</label>
                         <input multiline inputProps={{maxLength:200}} rows="5" variant ="standard" onChange = {setAbout} placeholder='Tell us about yourself' />
                     </div>
 
