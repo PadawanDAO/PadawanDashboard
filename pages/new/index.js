@@ -6,7 +6,8 @@ import { toast } from "react-toastify"
 import { ConnectWallet } from "@3rdweb/react";
 import { useWeb3 } from "@3rdweb/hooks";
 import { useState } from "react";
-import { WithContext as ReactTagInput } from 'react-tag-input';
+import ReactTagInput  from "@pathofdev/react-tag-input"
+
 toast.configure()
 
 
@@ -22,7 +23,7 @@ function PadawanForm() {
     const [about, SetAbout] = useState("jdj");
     const [twitter, SetTwitter] = useState("jdj");
     const [file, SetFile] = useState();
-    const [skills, SetSkills] = useState("jdj");
+    const [skills, SetSkills] = useState([]);
     const [tags, SetTags] = useState([]);
     const { address, chainId, provider } = useWeb3();
 
@@ -108,11 +109,13 @@ function PadawanForm() {
                     </div>
 
                     <ReactTagInput 
-placeholder="Type and press enter"
-editable={true}
-readOnly={false}
-removeOnBackspace={true}
-onChange={setTags} />
+                        tags={skills} 
+                        placeholder="Type and press enter"
+                        maxTags={10}
+                        editable={true}
+                        readOnly={false}
+                        removeOnBackspace={true}
+                        onChange={SetSkills} />
 
 
                     <div className="input-wrapper">

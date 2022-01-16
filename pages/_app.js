@@ -1,5 +1,7 @@
 import '../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css';
+import "@pathofdev/react-tag-input/build/index.css";
+
 import { ThirdwebProvider } from '@3rdweb/react';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, onValue } from "firebase/database";
