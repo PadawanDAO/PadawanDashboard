@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { uploadFile } from '../../FirebaseUtils'
 
 // Name 
 // Age
@@ -21,12 +22,15 @@ class PadawanForm extends Component {
         about: "",
         event: "",
         twitter: "",
-        github: ""    
+        github: "",
+        file: null,
     }   
 
     setName = (e) => this.setState({name: e.target.value})
 
     setTimezone = (e) => this.setState({timezone: e.target.value})
+
+    setFile = (e) => this.setState({file: e.target.files[0]}) 
 
     render() {
         return (
@@ -40,6 +44,9 @@ class PadawanForm extends Component {
                 <label>Timezone</label>
                 <input onChange = {this.setTimezone} placeholder='EST' />
             </div>
+            <button onClick = {() => uploadFile(this.state.file)}>Upload</button>
+            <input type = "file" onChange = {this.setFile} />
+            
         </React.Fragment>
         )
     }
