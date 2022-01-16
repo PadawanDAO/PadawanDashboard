@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import 'react-toastify/dist/ReactToastify.css';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, onValue } from "firebase/database";
 // Set the configuration for your app
