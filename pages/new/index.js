@@ -4,6 +4,8 @@ import { input, Button } from "@mui/material"
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import { toast } from "react-toastify"
 import { ConnectWallet } from "@3rdweb/react";
+import { useWeb3 } from "@3rdweb/hooks";
+import { useState } from "react";
 toast.configure()
 
 // Name 
@@ -16,50 +18,50 @@ toast.configure()
 // Twitter 
 // Github 
 
-class PadawanForm extends Component {
-
-    state = {
-        name: "",
-        birthday: null,
-        timezone: "",
-        organization: "",
-        about: "",
-        twitter: "",
-        file: null,
-    }   
-
-    setName = (e) => this.setState({name: e.target.value})
-
-    setTimezone = (e) => this.setState({timezone: e.target.value})
-
-    setOrganization = (e) => this.setState({organization: e.target.value})
-
-    setAbout = (e) => this.setState({about: e.target.value})
+function hi() {
 
 
-    setTwitter = (e) => this.setState({twitter: e.target.value})
+}
+
+function PadawanForm() {
 
 
-    setFile = (e) => this.setState({file: e.target.files[0]})
+    const [name, SetName] = useState();
+    const [birthday, SetBirthday] = useState();
+    const [timezone, SetTimezone] = useState();
+    const [organization, SetOrganization] = useState();
+    const [about, SetAbout] = useState();
+    const [twitter, SetTwitter] = useState();
+    const [file, SetFile] = useState();
 
-    SubmitForm = async () => {
-        const {
-            name, 
-            birthday, 
-            timezone, 
-            organization, 
-            about, 
-            twitter,
-         } = this.state
+
+    const setName = (e) => {SetName(e.target.value)}
+
+    const setBirthday = (e) => {SetBirthday(e.target.value)}
+
+    const setTimezone = (e) => {SetTimezone(e.target.value)}
+
+    const setOrganization = (e) => {SetOrganization(e.target.value)}
+
+    const setAbout = (e) => {SetAbout(e.target.value)}
+
+    const setTwitter = (e) => {SetTwitter(e.target.value)}
+
+    const setFile = (e) => {SetFile(e.target.files[0])}
+
+
+    const SubmitForm = async () => {
+
+         
 
         if (!name) return toast.error("Please enter a name")
         // if (!timezone) return toast.error("Please enter your timezone")
         if (!about) return toast.error("Please enter an about profile")
-        if (!this.state.file) return toast.error("Please upload a profile picture")
+        if (!file) return toast.error("Please upload a profile picture")
         if (twitter.includes("@")) return toast.error('Dont add in "@"!')
         toast.success("Submitting...")
 
-        const URL = await uploadFile(this.state.file)
+        const URL = await uploadFile(file)
 
         const padawanInfo = {
             name, 
@@ -74,33 +76,36 @@ class PadawanForm extends Component {
         AddPadawan(padawanInfo)
     }
 
-    render() {
 
         return (
         <React.Fragment>
-            
+            <div className="">
+            <div className='  flex justify-end m-3 '>
+                <ConnectWallet />
+            </div>
+            <div className="-mt-20">
             <div className="form-wrapper">
             
                 <div>
-                    <ConnectWallet />
+                    
                     <div className="input-wrapper">
-                        <label>Name</label>
-                        <input variant ="standard" onChange = {this.setName} placeholder='Your Name' />
+                        <label>h</label>
+                        <input variant ="standard" onChange = {setName} placeholder='Your Name' />
                     </div>
                     <div className="input-wrapper">
                         <label>Organization</label>
-                        <input variant ="standard" onChange = {this.setOrganization} placeholder='Organization' />
+                        <input variant ="standard" onChange = {setOrganization} placeholder='Organization' />
                     </div>
 
                     <div className="input-wrapper">
                         <label>About</label>
-                        <input multiline inputProps={{maxLength:200}} rows="5" variant ="standard" onChange = {this.setAbout} placeholder='Tell us about yourself' />
+                        <input multiline inputProps={{maxLength:200}} rows="5" variant ="standard" onChange = {setAbout} placeholder='Tell us about yourself' />
                     </div>
 
 
                     <div className="input-wrapper">
                         <label>Twitter (no @)</label>
-                        <input variant ="standard" onChange = {this.setTwitter} placeholder='aleemrehmtulla' />
+                        <input variant ="standard" onChange = {setTwitter} placeholder='aleemrehmtulla' />
                     </div>
                     <div className="input-wrapper">
                         <label className='pb-2'>Upload Profile Picture</label>
@@ -110,16 +115,20 @@ class PadawanForm extends Component {
       file:border-black file:duration-500 file:cursor-pointer
       file:text-sm file:font-semibold
       file:bg-black file:text-white
-      hover:file:bg-white hover:file:text-black " onChange={this.setFile} type = "file" accept="image/png, image/jpeg, image/jpg" />
+      hover:file:bg-white hover:file:text-black " onChange={setFile} type = "file" accept="image/png, image/jpeg, image/jpg" />
                     </div>
 
-                    <button className='bg-black duration-500 border-2 rounded-full border-black text-white px-8 py-1.5 hover:text-black hover:bg-white'  onClick = {this.SubmitForm}>Submit</button>
+                    <button className='bg-black duration-500 border-2 rounded-full border-black text-white px-8 py-1.5 hover:text-black hover:bg-white'  onClick = {SubmitForm}>Submit</button>
                     
                 </div>
             </div>
+            </div>
+        </div>
+       
+
         </React.Fragment>
         )
     }
-}
+
 
 export default PadawanForm
