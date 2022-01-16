@@ -30,6 +30,12 @@ export async function GetPadawans() {
     return padawans
 }
 
+export async function AddPadawan(padawan) {
+    const dbref = ref(database, `test_padawan/${padawan.ETHaddress}`)
+
+    const result = await set(dbref, padawan)
+}
+
 export async function GetPFP() {
     const picture = "https://xpgcvlzgtrybnonxvfam.supabase.in/storage/v1/object/public/bucket/pfp/"
     return picture    

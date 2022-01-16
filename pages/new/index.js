@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { uploadFile } from '../../FirebaseUtils'
+import { uploadFile, AddPadawan } from '../../FirebaseUtils'
 import { TextField, Button } from "@mui/material"
 import { toast } from "react-toastify"
 toast.configure()
@@ -63,7 +63,7 @@ class PadawanForm extends Component {
 
         const URL = await uploadFile(this.state.file)
 
-        console.log({
+        const padawanInfo = {
             name, 
             birthday, 
             timezone, 
@@ -74,7 +74,8 @@ class PadawanForm extends Component {
             github,
             URL,
          }
-        )
+
+        AddPadawan(padawanInfo)
     }
 
     render() {

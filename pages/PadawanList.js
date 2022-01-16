@@ -35,6 +35,7 @@ const PadawanList = () => {
     let cards = []
     if (data) {
         const PadawanKeys = Object.keys(data)
+        
         cards = PadawanKeys.map(index => {
         const pfpp = pfp+ [index] + ".jpeg"
         const PadawanData = data[index]
