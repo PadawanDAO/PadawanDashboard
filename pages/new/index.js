@@ -30,9 +30,6 @@ class PadawanForm extends Component {
 
     setTimezone = (e) => this.setState({timezone: e.target.value})
 
-<<<<<<< HEAD
-    setFile = (e) => this.setState({file: e.target.files[0]}) 
-=======
     setOrganization = (e) => this.setState({organization: e.target.value})
 
     setAbout = (e) => this.setState({about: e.target.value})
@@ -42,26 +39,11 @@ class PadawanForm extends Component {
     setTwitter = (e) => this.setState({twitter: e.target.value})
 
     setGithub = (e) => this.setState({github: e.target.value})
->>>>>>> 09b11232b71a6f2113ca002483a39bb8c95f2688
+
 
     render() {
         return (
         <React.Fragment>
-            <div className="input-wrapper">
-                <label>Name</label>
-                <input onChange = {this.setName} placeholder='name' />
-            </div>
-
-            <div className="input-wrapper">
-                <label>Timezone</label>
-                <input onChange = {this.setTimezone} placeholder='EST' />
-            </div>
-<<<<<<< HEAD
-            <button onClick = {() => uploadFile(this.state.file)}>Upload</button>
-            <input type = "file" onChange = {this.setFile} />
-            
-=======
-
             <div className="input-wrapper">
                 <label>Organization</label>
                 <input onChange = {this.setOrganization} placeholder='organization' />
@@ -86,7 +68,6 @@ class PadawanForm extends Component {
                 <label>Github</label>
                 <input onChange = {this.setGithub} placeholder='Github' />
             </div>
->>>>>>> 09b11232b71a6f2113ca002483a39bb8c95f2688
         </React.Fragment>
         )
     }
