@@ -29,11 +29,8 @@ export async function GetPadawans() {
 }
 
 export async function GetPFP() {
-    
-const picture = "https://xpgcvlzgtrybnonxvfam.supabase.in/storage/v1/object/public/bucket/pfp/"
+    const picture = "https://xpgcvlzgtrybnonxvfam.supabase.in/storage/v1/object/public/bucket/pfp/"
 
-return picture
-
-
+    return picture
     
 }
