@@ -14,23 +14,34 @@ class PadawanForm extends Component {
 
     state = {
         name: "",
-        age: null,
+        birhday: null,
         PFP: null,
-        timezone,
+        timezone: "",
         organization: "",
         about: "",
         event: "",
         twitter: "",
         github: ""    
-    }
+    }   
 
-    async componentDidMount() {
+    setName = (e) => this.setState({name: e.target.value})
 
-    }
-
+    setTimezone = (e) => this.setState({timezone: e.target.value})
 
     render() {
-        
+        return (
+        <React.Fragment>
+            <div className="input-wrapper">
+                <label>name</label>
+                <input onChange = {this.setName} placeholder='name' />
+            </div>
+
+            <div className="input-wrapper">
+                <label>Timezone</label>
+                <input onChange = {this.setTimezone} placeholder='EST' />
+            </div>
+        </React.Fragment>
+        )
     }
 }
 
