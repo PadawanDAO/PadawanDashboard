@@ -4,7 +4,7 @@ module.exports = {
     urlImports: ['https://aleemrehmtulla.com/my.json'],
   },
   images: {
-    domains: ['staging-dashboard.padawandao.com', 'xpgcvlzgtrybnonxvfam.supabase.in'],
+    domains: ['staging-dashboard.padawandao.com', 'xpgcvlzgtrybnonxvfam.supabase.in', "firebasestorage.googleapis.com"],
 
   },
 }

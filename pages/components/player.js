@@ -28,7 +28,7 @@ function Home(props) {
     <div className="text-center font-semibold text-xl pb-2">
 
       <h1>
-        Aleem Rehmtulla | 16y/o | EST
+        {props.name} | 16y/o | EST
       </h1>
 
     </div>
