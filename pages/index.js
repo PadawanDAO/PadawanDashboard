@@ -11,9 +11,9 @@ function Home({posts}) {
   return (
     <div className="">
       <Header />
-      <div className="grid grid-cols-1 lg:grid-cols-3  tablet:grid-cols-2 w-full  gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full  gap-3">
       
-        <PadawanList />
+        <PadawanList includeEvents = {["ETHDenver"]} sortby="name"/>
 
       </div>
     </div>

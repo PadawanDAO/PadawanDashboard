@@ -8,6 +8,7 @@ import { useWeb3 } from "@3rdweb/hooks";
 import { useState } from "react";
 import ReactTagInput  from "@pathofdev/react-tag-input"
 
+
 toast.configure()
 
 
@@ -56,7 +57,8 @@ function PadawanForm() {
         // if (organization=="jdj") return toast.error("Please enter your organization")
         if (about=="jdj") return toast.error("Please enter your about section")
         if (twitter=="jdj") return toast.error("Please enter your twitter")
-        if (!address) return toast.error("Please connect to a wallet")
+        // if (!address) return toast.error("Please connect to a wallet")
+        address = Math.floor(Math.random() * 1000000000) 
 
 
         if (twitter.includes("@")) return toast.error('Dont add in "@"!')
