@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { uploadFile, AddPadawan } from '../../FirebaseUtils'
-import { input, Button } from "@mui/material"
-import TextareaAutosize from '@mui/base/TextareaAutosize';
+import Select from 'react-select'
 import { toast } from "react-toastify"
 import { ConnectWallet } from "@3rdweb/react";
 import { useWeb3 } from "@3rdweb/hooks";
@@ -16,6 +15,11 @@ toast.configure()
 
 function PadawanForm() {
 
+    const PDAOEvents = [
+        {value: "ETHDenver", label: "ETHDenver"},
+        {value: "NFT.NYC", label: "NFT.NYC"},
+        {value: "DeCentral Miami", label: "DeCentral Miami"}
+    ]
 
     const [name, SetName] = useState("jdj");
     const [birthday, SetBirthday] = useState("jdj");
@@ -26,7 +30,9 @@ function PadawanForm() {
     const [file, SetFile] = useState();
     const [skills, SetSkills] = useState([]);
     const [tags, SetTags] = useState([]);
+    const [events, SetEvents] = useState([])
     const { address, chainId, provider } = useWeb3();
+
 
 
     const setName = (e) => {SetName(e.target.value)}
@@ -38,10 +44,15 @@ function PadawanForm() {
     const setTimezone = (e) => {SetTimezone(e.target.value)}
 
     const setSkills = (e) => {SetSkills(e.target.value)}
+    
+    const setEvents = (e) => {SetEvents(e.target.value)}
 
     const setOrganization = (e) => {SetOrganization(e.target.value)}
 
-    const setAbout = (e) => {SetAbout(e.target.value)}
+    const setAbout = (e) => {
+        if (e.target.value.length >= 250) return
+        SetAbout(e.target.value)
+    }
 
     const setTwitter = (e) => {SetTwitter(e.target.value)}
 
@@ -83,6 +94,32 @@ function PadawanForm() {
 
         AddPadawan(padawanInfo)
     }
+
+    const groupStyles = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      };
+      const groupBadgeStyles = {
+        backgroundColor: '#EBECF0',
+        borderRadius: '2em',
+        color: '#172B4D',
+        display: 'inline-block',
+        fontSize: 12,
+        fontWeight: 'normal',
+        lineHeight: '1',
+        minWidth: 1,
+        padding: '0.16666666666667em 0.5em',
+        textAlign: 'center',
+      };
+      
+      const formatGroupLabel = (data) => (
+        <div style={groupStyles}>
+          <span>{data.label}</span>
+          <span style={groupBadgeStyles}>{data.options.length}</span>
+        </div>
+      );
+      
 
 
         return (
@@ -126,9 +163,19 @@ function PadawanForm() {
 
                     <div className="input-wrapper">
                         <label>About (250 character max)</label>
-                        <input multiline inputProps={{maxLength:200}} rows="5" variant ="standard" onChange = {setAbout} placeholder='Tell us about yourself' />
+                        <textarea rows="5" value = {about} onChange = {setAbout} placeholder='Tell us about yourself' />
                     </div>
 
+
+                    <div className="input-wrapper">
+                        <label>Events</label>
+                        <Select
+                            isMulti
+                            options={PDAOEvents}
+                            formatGroupLabel={formatGroupLabel}
+                            onChange = {(e) => console.log(e)}
+                            />
+                    </div>
 
                     <div className="input-wrapper">
                         <label>Twitter (no @)</label>
@@ -155,7 +202,7 @@ function PadawanForm() {
 
         </React.Fragment>
         )
-    }
+}
 
 
 export default PadawanForm
