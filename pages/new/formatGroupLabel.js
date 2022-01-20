@@ -19,7 +19,7 @@ const groupStyles = {
   const formatGroupLabel = (data) => (
     <div style={groupStyles}>
       <span>{data.label}</span>
-      <span style={groupBadgeStyles}>{data.options.length}</span>
+      <span style={groupBadgeStyles}>{data.options ? data.options.length : ""}</span>
     </div>
   );
   

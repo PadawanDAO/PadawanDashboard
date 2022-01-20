@@ -35,7 +35,7 @@ function CalcAge(birthday) {
 const BetterPlayer = (props) => {
     let {name, birthday, URL, address, about, skills, timezone, twitter, events} = props
     // about = about.replace(/\n+/g, " ")
-    about = about.replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n');
+    if (about) about = about.replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n');
 
     CalcAge(birthday)
     return (
@@ -71,7 +71,7 @@ const TextBlocks = ({texts, center}) => {
     if (center) cls += "centered "
     return (
         <div className={cls}>
-            {texts.map(s => <div key= {s}>{s}</div>)}
+            {texts && texts.map(s => <div key= {s}>{s}</div>)}
         </div>
     )
 }

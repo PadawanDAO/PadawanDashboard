@@ -153,7 +153,6 @@ a {
   align-items: center;
   height: 3.5rem;
   overflow: hidden;
-  border: 1px solid black;
 }
 
 .text-block-wrapper > div {
@@ -208,7 +207,7 @@ a {
 .filter-selector {
   display:flex;
   flex-wrap: wrap;
-  border: 1px solid green;
+
   align-items: center;
   justify-content: center;
 }
