@@ -16,6 +16,8 @@ a {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -111,13 +113,9 @@ a {
 }
 
 .better-player-header {
-  height: 100px;
+  /* height: 100px; */
   width: 100%;
 }
-/* 
-@media only screen and (max-width: 768px)  {
-  .better-player-wrapper { width: }
-} */
 
 .better-player-pfp-wrapper {
   display: flex;
@@ -145,18 +143,17 @@ a {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 1rem;
-  background-color: orange;
 }
 
 .text-block-wrapper {
-  width:80%;
+  width:100%;
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   height: 3.5rem;
   overflow: hidden;
-  justify-content: center;
+  border: 1px solid black;
 }
 
 .text-block-wrapper > div {
@@ -171,11 +168,12 @@ a {
 }
 
 .better-player-bio {
-  border: 2px solid orange;
   padding: 0.75rem;
-  height: 300px;
+  min-height: 150px;
+  max-height: 300px;
   width: 100%
 }
+
 
 .better-player-bio > p {
   white-space:pre-wrap;
@@ -187,4 +185,22 @@ a {
   font-weight: 700;
   margin: 0.5rem 0 0.5rem 0
 }
+.main-wrapper {
+  padding: 1rem;
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  overflow: scroll;
+}
 
+.better-player-skills-wrapper {
+  width: 100%;
+  padding: 0.75rem;
+}
+.better-player-skills-wrapper > h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.5rem 0
+}
+
+.centered { justify-content: center;}

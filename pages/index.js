@@ -1,15 +1,9 @@
-import { data } from "autoprefixer";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Header from "./components/header";
-import { useEffect, useState } from "react";
 import PadawanList from "./PadawanList";
-import { ConnectWallet } from "@3rdweb/react";
 
 function Home({posts}) {
   return (
-    <div className="bg-red ">
+    <div className="main-wrapper">
       <Header />
       {/* <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full items-center gap-3"> */}
       <div className="bp-flex-test">

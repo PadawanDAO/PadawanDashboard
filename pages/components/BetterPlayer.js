@@ -37,7 +37,7 @@ function CalcAge(birthday) {
 }
 
 const BetterPlayer = (props) => {
-    let {name, birthday, URL, address, about, skills, timezone, twitter} = props
+    let {name, birthday, URL, address, about, skills, timezone, twitter, events} = props
     // about = about.replace(/\n+/g, " ")
     about = about.replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n');
 
@@ -53,10 +53,14 @@ const BetterPlayer = (props) => {
             <div className='better-player-name-wrapper'>
                 <h3>{name} | {`${CalcAge(birthday)}y/o`} | {timezone}</h3>
             </div>
-            <TextBlocks texts={skills} />
+            <TextBlocks center texts={events} />
             <div className='better-player-bio'>
                 <h3>Bio</h3>
                 <p >{about}</p>
+            </div>
+            <div className='better-player-skills-wrapper'>
+                <h3>Skills</h3>
+                <TextBlocks texts={skills} />
             </div>
         </div>
     )
@@ -65,9 +69,12 @@ const BetterPlayer = (props) => {
 
 
 
-const TextBlocks = ({texts}) => {
+const TextBlocks = ({texts, center}) => {
+
+    let cls = "text-block-wrapper " 
+    if (center) cls += "centered "
     return (
-        <div className='text-block-wrapper'>
+        <div className={cls}>
             {texts.map(s => <div>{s}</div>)}
         </div>
     )
