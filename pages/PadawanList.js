@@ -38,22 +38,22 @@ const PadawanList = (props) => {
         let PadawanKeys = Object.keys(data)
 
         if (includeEvents !== undefined) {
-          PadawanKeys.filter((index) => {
+          PadawanKeys = PadawanKeys.filter((index) => {
             const event = data[index].event
-            return includeEvents.includes(event)
+            const include = includeEvents.includes(event)
+            return include
           })
         }
+        console.log("Keys: ", PadawanKeys)
         
         if (sortby && sortby.toLowerCase() == "name") {
-          console.log("Sorting: ", PadawanKeys)
+
           PadawanKeys.sort((a, b) => {
             const nameA = data[a].name.toLowerCase()
             const nameB = data[b].name.toLowerCase()
-            console.log(nameA, nameB)
             if (nameA > nameB) return 1
             return -1
           })
-          console.log("Sorted: ", PadawanKeys)
         }
 
         
