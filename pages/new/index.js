@@ -79,6 +79,7 @@ function PadawanForm() {
         toast.success("Submitting...")
 
         const URL = await uploadFile(file)
+        events = events.map(({ value }) => value)
 
         const padawanInfo = {
             name, 
@@ -89,6 +90,7 @@ function PadawanForm() {
             skills,
             about, 
             twitter,
+            events,
             URL,
          }
 
@@ -163,7 +165,7 @@ function PadawanForm() {
 
                     <div className="input-wrapper">
                         <label>About (250 character max)</label>
-                        <textarea rows="5" value = {about} onChange = {setAbout} placeholder='Tell us about yourself' />
+                        <textarea value = {about} onChange = {setAbout} placeholder='Tell us about yourself' />
                     </div>
 
 
@@ -171,9 +173,10 @@ function PadawanForm() {
                         <label>Events</label>
                         <Select
                             isMulti
+                            defaultValue={events}
                             options={PDAOEvents}
                             formatGroupLabel={formatGroupLabel}
-                            onChange = {(e) => console.log(e)}
+                            onChange = {SetEvents}
                             />
                     </div>
 

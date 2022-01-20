@@ -39,9 +39,12 @@ const PadawanList = (props) => {
 
         if (includeEvents !== undefined) {
           PadawanKeys = PadawanKeys.filter((index) => {
-            const event = data[index].event
-            const include = includeEvents.includes(event)
-            return include
+            const events = data[index].events
+            console.log("Events", events)
+            for (let event of events) {
+              if (includeEvents.includes(event)) return true
+            }
+            return false
           })
         }
         console.log("Keys: ", PadawanKeys)
