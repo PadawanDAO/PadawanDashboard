@@ -25,7 +25,7 @@ const getName = ref(db, 'padawans/' + 1 + '/name');
 
 const PadawanList = (props) => {
   const [data, setData] = useState();
-  let { sortby, includeEvents } = props
+  let { sortby, includeEvents, searchQuery } = props
   includeEvents = includeEvents.map(e => e.value)
   useEffect(() => {
     GetPadawansTest()
@@ -38,17 +38,23 @@ const PadawanList = (props) => {
     if (data) {
         let PadawanKeys = Object.keys(data)
 
+        if (searchQuery) {
+          PadawanKeys = PadawanKeys.filter((index) => {
+            // data[index].name.toLowercase().includes(searchQuery.toLowerCase())
+            // return false
+            return data[index].name.toLowerCase().includes(searchQuery.toLowerCase())
+          })
+        }
+
         if (includeEvents !== undefined) {
           PadawanKeys = PadawanKeys.filter((index) => {
             const events = data[index].events
-            console.log("Events", events)
             for (let event of events) {
               if (includeEvents.includes(event)) return true
             }
             return false
           })
         }
-        console.log("Keys: ", PadawanKeys)
         
         if (sortby && sortby.toLowerCase() == "name") {
 

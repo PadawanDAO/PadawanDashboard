@@ -204,3 +204,18 @@ a {
 }
 
 .centered { justify-content: center;}
+
+.filter-selector {
+  display:flex;
+  flex-wrap: wrap;
+  border: 1px solid green;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-selector > input {
+  border: 2px solid #e1e1e1;
+  margin: 1rem;
+  padding: 0.25rem;
+  border-radius: 4px
+}

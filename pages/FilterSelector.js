@@ -2,20 +2,24 @@ import React from 'react';
 import formatGroupLabel from './new/formatGroupLabel';
 import Select from 'react-select'
 
-const FilterSelector = ({selectedEvents, events, setEvents}) => {
-    const PDAOEvents = events.map(e => {
-        return {value: e, label: e}
-    })
-
-
+const FilterSelector = ({AllEvents, selectedEvents, events, setEvents, searchQuery, setSearchQuery}) => {
     return (
-        <Select
-            isMulti
-            defaultValue={selectedEvents}
-            options={PDAOEvents}
-            formatGroupLabel={formatGroupLabel}
-            onChange = {setEvents}
-        />
+        <div className = "filter-selector">
+            <input 
+                placeholder = "Search..."
+                onChange = {e => setSearchQuery(e.target.value)}
+                value = {searchQuery}/>
+
+            <Select
+                instanceId={1}
+                isMulti
+                defaultValue={selectedEvents}
+                options={AllEvents}
+                formatGroupLabel={formatGroupLabel}
+                onChange = {setEvents}/>
+
+        </div>
+
     )
 }
 

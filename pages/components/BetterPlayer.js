@@ -14,10 +14,6 @@ import Image from 'next/image';
 
     }
 
-
-
-
-
 */
 
 function CalcAge(birthday) {
@@ -75,7 +71,7 @@ const TextBlocks = ({texts, center}) => {
     if (center) cls += "centered "
     return (
         <div className={cls}>
-            {texts.map(s => <div>{s}</div>)}
+            {texts.map(s => <div key= {s}>{s}</div>)}
         </div>
     )
 }
