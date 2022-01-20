@@ -6,20 +6,16 @@ import { ConnectWallet } from "@3rdweb/react";
 import { useWeb3 } from "@3rdweb/hooks";
 import { useState } from "react";
 import ReactTagInput  from "@pathofdev/react-tag-input"
-
+import formatGroupLabel from "./formatGroupLabel"
 
 toast.configure()
 
 
-
-
 function PadawanForm() {
-
-    const PDAOEvents = [
-        {value: "ETHDenver", label: "ETHDenver"},
-        {value: "NFT.NYC", label: "NFT.NYC"},
-        {value: "DeCentral Miami", label: "DeCentral Miami"}
-    ]
+    const DaoEvents = ["NFT.NYC", "ETHDenver", "DeCental Miami"]
+    const PDAOEvents = DaoEvents.map(e => {
+        return {value: e, label: e}
+    })
 
     const [name, SetName] = useState("jdj");
     const [birthday, SetBirthday] = useState("jdj");
@@ -36,29 +32,16 @@ function PadawanForm() {
 
 
     const setName = (e) => {SetName(e.target.value)}
-
-    const setTags = (e) => {SetTags(e)}
-
     const setBirthday = (e) => {SetBirthday(e.target.value)}
-
     const setTimezone = (e) => {SetTimezone(e.target.value)}
-
-    const setSkills = (e) => {SetSkills(e.target.value)}
-    
-    const setEvents = (e) => {SetEvents(e.target.value)}
-
     const setOrganization = (e) => {SetOrganization(e.target.value)}
-
     const setAbout = (e) => {
         if (e.target.value.length >= 250) return
         SetAbout(e.target.value)
     }
 
     const setTwitter = (e) => {SetTwitter(e.target.value)}
-
     const setFile = (e) => {SetFile(e.target.files[0])}
-
-   console.log(tags);
     
     const SubmitForm = async () => {
 
@@ -97,31 +80,7 @@ function PadawanForm() {
         AddPadawan(padawanInfo)
     }
 
-    const groupStyles = {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      };
-      const groupBadgeStyles = {
-        backgroundColor: '#EBECF0',
-        borderRadius: '2em',
-        color: '#172B4D',
-        display: 'inline-block',
-        fontSize: 12,
-        fontWeight: 'normal',
-        lineHeight: '1',
-        minWidth: 1,
-        padding: '0.16666666666667em 0.5em',
-        textAlign: 'center',
-      };
-      
-      const formatGroupLabel = (data) => (
-        <div style={groupStyles}>
-          <span>{data.label}</span>
-          <span style={groupBadgeStyles}>{data.options.length}</span>
-        </div>
-      );
-      
+    
 
 
         return (
@@ -147,13 +106,13 @@ function PadawanForm() {
                     <div className="input-wrapper">
                         <label>Skills</label>
                             <ReactTagInput 
-                            tags={skills} 
-                            placeholder="Type and press enter"
-                            maxTags={5}
-                            editable={true}
-                            removeOnBackspace={true}
-                            readOnly={false}
-                            onChange={SetSkills} />
+                                tags={skills} 
+                                placeholder="Type and press enter"
+                                maxTags={5}
+                                editable={true}
+                                removeOnBackspace={true}
+                                readOnly={false}
+                                onChange={SetSkills} />
                     </div>
 
                    

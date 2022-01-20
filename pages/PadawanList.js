@@ -25,7 +25,8 @@ const getName = ref(db, 'padawans/' + 1 + '/name');
 
 const PadawanList = (props) => {
   const [data, setData] = useState();
-  const { sortby, includeEvents } = props
+  let { sortby, includeEvents } = props
+  includeEvents = includeEvents.map(e => e.value)
   useEffect(() => {
     GetPadawansTest()
       .then(d => setData(d))
