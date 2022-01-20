@@ -9,11 +9,12 @@ import { ConnectWallet } from "@3rdweb/react";
 
 function Home({posts}) {
   return (
-    <div className="">
+    <div className="bg-red ">
       <Header />
-      <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full  gap-3">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full items-center gap-3"> */}
+      <div className="bp-flex-test">
       
-        <PadawanList includeEvents = {["ETHDenver"]} sortby="name"/>
+        <PadawanList includeEvents = {["ETHDenver", "NFT.NYC"]} sortby="name"/>
 
       </div>
     </div>

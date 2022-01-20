@@ -65,8 +65,8 @@ const PadawanList = (props) => {
         const {name, URL, address, about, skills, timezone, twitter} = PadawanData
         return (
           <span key={index}>
-              <Player name={name} pfp={URL} bg={"/banner.png"} />
-              {/* <BetterPlayer {...PadawanData} /> */}
+              {/* <Player name={name} pfp={URL} bg={"/banner.png"} /> */}
+              <BetterPlayer {...PadawanData} />
 
           </span>
         )

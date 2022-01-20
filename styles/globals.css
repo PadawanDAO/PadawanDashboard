@@ -104,14 +104,20 @@ a {
   overflow: hidden;
   border: 2px solid black;
   display: flex;
+  width: min(500px, 80vw);
   flex-direction: column;
   align-items: center;
+  margin: 2rem
 }
 
 .better-player-header {
   height: 100px;
   width: 100%;
 }
+/* 
+@media only screen and (max-width: 768px)  {
+  .better-player-wrapper { width: }
+} */
 
 .better-player-pfp-wrapper {
   display: flex;
@@ -125,9 +131,60 @@ a {
   overflow: hidden;
   background-color: white;
   margin-bottom: 1rem;
+  z-index: 1;
 }
 
 .better-player-name-wrapper {
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+.bp-flex-test {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 1rem;
+  background-color: orange;
+}
+
+.text-block-wrapper {
+  width:80%;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 3.5rem;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.text-block-wrapper > div {
+  text-transform: capitalize;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color:white;
+  background-color: black;
+  border-radius: 4px;
+  margin:0.5rem
+}
+
+.better-player-bio {
+  border: 2px solid orange;
+  padding: 0.75rem;
+  height: 300px;
+  width: 100%
+}
+
+.better-player-bio > p {
+  white-space:pre-wrap;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.better-player-bio > h3 { 
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.5rem 0
+}
+
