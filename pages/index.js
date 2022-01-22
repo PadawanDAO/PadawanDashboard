@@ -12,9 +12,9 @@ const DefaultDaoEvents = DaoEvents.current.map(e => {
   const [selectedEvents, setSelectedEvents] = useState(DefaultDaoEvents);
   const [searchQuery, setSearchQuery] = useState("")
   return (
-    <div className="main-wrapper">
+    <div className="">
       <Header />
-      {/* <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full items-center gap-3"> */}
+   
         <FilterSelector 
           searchQuery = {searchQuery} 
           setSearchQuery = {setSearchQuery} 
@@ -22,14 +22,13 @@ const DefaultDaoEvents = DaoEvents.current.map(e => {
           selectedEvents = {selectedEvents} 
           AllEvents={DefaultDaoEvents}/>
           
-      <div className="bp-flex-test">
+          <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full items-center gap-3">
         <PadawanList 
             includeEvents = {selectedEvents} 
             searchQuery = {searchQuery}
             sortby="name"/>
-
+  </div>
       </div>
-    </div>
   );
 }
 
