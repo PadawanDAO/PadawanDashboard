@@ -16,6 +16,8 @@ a {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -43,9 +45,10 @@ a {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 5%
-  
+  padding: 5%;
+  height: 100%;
 }
+
 
 .form-wrapper > div {
   display:flex;
@@ -59,12 +62,23 @@ a {
 }
 
 .input-wrapper {
+
   display: flex;
   flex-direction: column;
   margin: 1rem;
   width: min(90%, 600px);
   padding: 1rem;
 }
+.input-wrapper > label {
+  margin-bottom: 0.25rem
+}
+.input-wrapper > input, textarea {
+  border: 2px solid #e1e1e1;
+  border-radius: 4px;
+  padding: 0.25rem
+}
+
+
 
 
 
@@ -82,4 +96,125 @@ a {
   .form-wrapper {
     padding: 2%
   }
+}
+
+
+/* better player */
+
+.better-player-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid black;
+  display: flex;
+  width: min(500px, 80vw);
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem
+}
+
+.better-player-header {
+  /* height: 100px; */
+  width: 100%;
+}
+
+.better-player-pfp-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 0px;
+  border-radius: 100%;
+  padding-bottom: 48px;
+  margin-top: -48px;
+  padding-top: 48px;
+  overflow: hidden;
+  background-color: white;
+  margin-bottom: 1rem;
+  z-index: 1;
+}
+
+.better-player-name-wrapper {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.bp-flex-test {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.text-block-wrapper {
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 3.5rem;
+  overflow: hidden;
+}
+
+.text-block-wrapper > div {
+  text-transform: capitalize;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color:white;
+  background-color: black;
+  border-radius: 4px;
+  margin:0.5rem
+}
+
+.better-player-bio {
+  padding: 0.75rem;
+  min-height: 150px;
+  max-height: 300px;
+  width: 100%
+}
+
+
+.better-player-bio > p {
+  white-space:pre-wrap;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.better-player-bio > h3 { 
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.5rem 0
+}
+.main-wrapper {
+  padding: 1rem;
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  overflow: scroll;
+}
+
+.better-player-skills-wrapper {
+  width: 100%;
+  padding: 0.75rem;
+}
+.better-player-skills-wrapper > h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.5rem 0
+}
+
+.centered { justify-content: center;}
+
+.filter-selector {
+  display:flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-selector > input {
+  border: 2px solid #e1e1e1;
+  margin: 1rem;
+  padding: 0.25rem;
+  border-radius: 4px
 }

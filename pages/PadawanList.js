@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from "react"
 import Player from "./components/player";
 import { getDatabase, ref, child, get, onValue } from "firebase/database";
-import { GetPadawans, GetPFP } from '../FirebaseUtils';
+import { GetPadawans, GetPadawansTest, GetPFP } from '../FirebaseUtils';
 const dbRef = ref(getDatabase());
 const db = getDatabase();
 
@@ -21,7 +21,7 @@ const PadawanList = () => {
   const [data, setData] = useState();
   const [pfp, setPfp] = useState();
   useEffect(() => {
-    GetPadawans()
+    GetPadawansTest()
       .then(d => setData(d))
       .catch(err => console.log(err))
   }, [])
@@ -40,8 +40,9 @@ const PadawanList = () => {
         const pfpp = pfp+ [index] + ".jpeg"
         const PadawanData = data[index]
         return (
+          
         <span key={index}>
-            <Player name={PadawanData.name} time={PadawanData.time} pfp={pfpp} bg={PadawanData.pfp} />
+            <Player  {...PadawanData}  pfp={pfpp} bg={PadawanData.pfp} />
         </span>
         )
         })

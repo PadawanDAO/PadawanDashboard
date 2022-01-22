@@ -1,36 +1,48 @@
-import { data } from "autoprefixer";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Header from "./components/header";
-import { useEffect, useState } from "react";
+import {useEffect, useState, useRef} from "react"
 import PadawanList from "./PadawanList";
-import { ConnectWallet } from "@3rdweb/react";
-
+import FilterSelector from "./FilterSelector";
 function Home({posts}) {
+
+const DaoEvents = useRef(["NFT.NYC", "ETHDenver", "DeCental Miami"])
+const DefaultDaoEvents = DaoEvents.current.map(e => {
+    return {value: e, label: e}
+})
+
+  const [selectedEvents, setSelectedEvents] = useState(DefaultDaoEvents);
+  const [searchQuery, setSearchQuery] = useState("")
   return (
     <div className="">
       <Header />
-      <div className="grid grid-cols-1 lg:grid-cols-3  tablet:grid-cols-2 w-full  gap-3">
-      
-        <PadawanList />
-
+   
+        <FilterSelector 
+          searchQuery = {searchQuery} 
+          setSearchQuery = {setSearchQuery} 
+          setEvents = {setSelectedEvents} 
+          selectedEvents = {selectedEvents} 
+          AllEvents={DefaultDaoEvents}/>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full items-center gap-3">
+        <PadawanList 
+            includeEvents = {selectedEvents} 
+            searchQuery = {searchQuery}
+            sortby="name"/>
+  </div>
       </div>
-    </div>
   );
 }
 
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const res = await fetch('https://www.aleemrehmtulla.com/my.json')
-  const pre = await res.json()
-  const posts = pre.padawans
-  const hi = pre
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get posts
+//   const res = await fetch('https://www.aleemrehmtulla.com/my.json')
+//   const pre = await res.json()
+//   const posts = pre.padawans
+//   const hi = pre
 
-  return {
-    props: {
-      posts,
-    },
-  }
-}
+//   return {
+//     props: {
+//       posts,
+//     },
+//   }
+// }
 export default Home;

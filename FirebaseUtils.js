@@ -29,6 +29,13 @@ export async function GetPadawans() {
     const padawans = await val.val()
     return padawans
 }
+export async function GetPadawansTest() {
+    const val = await get(ref(database, "/test_padawan"))
+                    .catch(err => console.log(err))
+
+    const padawans = await val.val()
+    return padawans
+}
 
 export async function AddPadawan(padawan) {
     const dbref = ref(database, `test_padawan/${padawan.address}`)
