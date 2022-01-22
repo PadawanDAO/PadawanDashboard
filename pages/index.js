@@ -21,12 +21,15 @@ const DefaultDaoEvents = DaoEvents.current.map(e => {
           setEvents = {setSelectedEvents} 
           selectedEvents = {selectedEvents} 
           AllEvents={DefaultDaoEvents}/>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full items-center gap-3">
+          <div className="pr-20 pl-20">
+            <div className="flex justify-center ">
+          <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-fit place-content-center  gap-3">
         <PadawanList 
             includeEvents = {selectedEvents} 
             searchQuery = {searchQuery}
             sortby="name"/>
+  </div>
+  </div>  
   </div>
       </div>
   );

@@ -31,9 +31,9 @@ function Home(props) {
 
 
   return (
-    <div className="flex justify-center p-20">
+    <div className="flex justify-center">
     
-    <div className="border-4 border-black rounded-2xl w-fit ">
+    <div className="border-4 border-black rounded-2xl w-fit max-w-md ">
     
 
     {/* header and pfp */}
@@ -71,8 +71,8 @@ function Home(props) {
 
 
     <div className="pb-4">
-    <h1 className="text-3xl font-semibold pb-1">About Me</h1>
-    <p> {props.about} </p>
+    <h1 className="text-3xl font-semibold pb-1 ">About Me</h1>
+    <p className="h-40"> {props.about} </p>
     </div>
 
     <div className="">
