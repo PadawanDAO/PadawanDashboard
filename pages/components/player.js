@@ -59,7 +59,7 @@ function Home(props) {
     <div className="pl-8 pr-8">
     <div className="flex  space-x-2 justify-center pb-4">
 
-      <Tag value={events[0]}/>
+     {events && <Tag value={events[0]}/>   }
       <Tag value={organization}/>
     <Social twitter={twitter} />
 
@@ -79,12 +79,17 @@ function Home(props) {
     <h1 className="text-3xl font-semibold">Skills</h1>
 
     <div className="flex space-x-4 pt-2">
-    <Tag value={skills[0]} />
-      <Tag value={skills[1]}/>
-      <Tag value={skills[2]}/>
-      <Tag value={skills[3]}/>
+     
+    
+   { skills && <Tag value={skills[0]} /> }
+   { skills && <Tag value={skills[1]} /> }
+   { skills && <Tag value={skills[2]} /> }
+   { skills && <Tag value={skills[3]} /> }
+
+      
       </div>
     </div>
+
 
 
 
