@@ -50,10 +50,10 @@ const Hi = [
 
   setTimeout(() => {
     setTime(true);
-  }, 1000);
+  }, 1700);
 
 
-if (!data || !time) {
+if ( !data || !time) {
   const PadawanKeys = Hi
   cards = PadawanKeys.map(index => {
 
