@@ -2,6 +2,7 @@ import Header from "./components/header";
 import {useEffect, useState, useRef} from "react"
 import PadawanList from "./PadawanList";
 import FilterSelector from "./FilterSelector";
+import PlayerSkelton from "./components/playerSkeleton";
 function Home({posts}) {
 
 const DaoEvents = useRef(["NFT.NYC", "ETHDenver", "DeCental Miami"])
