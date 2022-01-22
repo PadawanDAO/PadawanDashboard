@@ -76,7 +76,7 @@ function Home(props) {
     </div>
 
     <div className="">
-    <h1 className="text-3xl font-semibold">Skills</h1>
+    <h1 className="text-3xl font-semibold">Skills </h1>
 
     <div className="flex space-x-4 pt-2">
      
