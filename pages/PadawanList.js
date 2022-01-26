@@ -9,19 +9,14 @@ const db = getDatabase();
 
 const getName = ref(db, 'padawans/' + 1 + '/name');
 
-// onValue(getName, (snapshot) => {
-//   const data = snapshot.val();
-//   console.log(data +"yooo");
-// });
 
-
-
-
-
-const PadawanList = () => {
+const PadawanList = (props) => {
   const [data, setData] = useState();
   const [pfp, setPfp] = useState();
   const [time, setTime] = useState();
+
+  let { sortby, includeEvents, searchQuery } = props
+  if (includeEvents) includeEvents = includeEvents.map(e => e.value)
   useEffect(() => {
     GetPadawansTest()
       .then(d => setData(d))
@@ -71,19 +66,48 @@ if ( !data || !time) {
 
 
     if (data && time==true) {
-        const PadawanKeys = Object.keys(data)
-        
-        cards = PadawanKeys.map(index => {
-        const pfpp = pfp+ [index] + ".jpeg"
-        const PadawanData = data[index]
-       
-        return (
-          
-        <span key={index}>
-            <Player  {...PadawanData}  pfp={pfpp} bg={PadawanData.pfp} />
-        </span>
-        )
+      let PadawanKeys = Object.keys(data)
+
+      if (searchQuery) {
+        PadawanKeys = PadawanKeys.filter((index) => {
+          // data[index].name.toLowercase().includes(searchQuery.toLowerCase())
+          // return false
+          return data[index].name.toLowerCase().includes(searchQuery.toLowerCase())
         })
+      }
+
+      if (includeEvents !== undefined) {
+        PadawanKeys = PadawanKeys.filter((index) => {
+          const events = data[index].events
+          for (let event of events) {
+            if (includeEvents.includes(event)) return true
+          }
+          return false
+        })
+      }
+      
+      if (sortby && sortby.toLowerCase() == "name") {
+
+        PadawanKeys.sort((a, b) => {
+          const nameA = data[a].name.toLowerCase()
+          const nameB = data[b].name.toLowerCase()
+          if (nameA > nameB) return 1
+          return -1
+        })
+      }
+
+      
+      cards = PadawanKeys.map(index => {
+      const PadawanData = data[index]
+      const {name, URL, address, about, skills, timezone, twitter} = PadawanData
+      return (
+        <span key={index}>
+            {/* <Player name={name} pfp={URL} bg={"/banner.png"} /> */}
+            <Player {...PadawanData} />
+
+        </span>
+      )
+      })
   }
 
   
