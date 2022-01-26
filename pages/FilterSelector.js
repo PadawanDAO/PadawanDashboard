@@ -11,6 +11,7 @@ const FilterSelector = ({AllEvents, selectedEvents, events, setEvents, searchQue
                 value = {searchQuery}/>
 
             <Select
+                className = " tablet:flex hidden "
                 instanceId={1}
                 isMulti
                 defaultValue={selectedEvents}

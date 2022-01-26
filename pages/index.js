@@ -13,7 +13,7 @@ const DefaultDaoEvents = DaoEvents.current.map(e => {
   const [selectedEvents, setSelectedEvents] = useState(DefaultDaoEvents);
   const [searchQuery, setSearchQuery] = useState("")
   return (
-    <div className="">
+    <div className="grid place-self-center">
       <Header />
    
         <FilterSelector 
@@ -22,15 +22,15 @@ const DefaultDaoEvents = DaoEvents.current.map(e => {
           setEvents = {setSelectedEvents} 
           selectedEvents = {selectedEvents} 
           AllEvents={DefaultDaoEvents}/>
-          <div className="pr-20 pl-20">
-            <div className="flex justify-center ">
-          <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-fit place-content-center  gap-3">
+         
+          <div className="pr-4 pl-4 tablet:pr-20 tablet:pl-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2  place-items-center  gap-3">
         <PadawanList 
             includeEvents = {selectedEvents} 
             searchQuery = {searchQuery}
             sortby="name"/>
-  </div>
-  </div>  
+        </div>
+  
   </div>
       </div>
   );

@@ -81,10 +81,10 @@ function Home(props) {
     <div className="flex space-x-4 pt-2">
      
     
-   { skills && <Tag value={skills[0]} /> }
-   { skills && <Tag value={skills[1]} /> }
-   { skills && <Tag value={skills[2]} /> }
-   { skills && <Tag value={skills[3]} /> }
+   { skills[0] && <Tag value={skills[0]} /> }
+   { skills[1] && <Tag value={skills[1]} /> }
+   { skills[2] && <Tag value={skills[2]} /> }
+   { skills[3] && <Tag value={skills[3]} /> }
 
       
       </div>

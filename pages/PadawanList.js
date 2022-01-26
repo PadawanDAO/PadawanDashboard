@@ -27,42 +27,39 @@ const PadawanList = (props) => {
       .then(d => setPfp(d))
       .catch(err => console.log(err))
   }, [])
-  console.log(pfp + "this is state");
 
     let cards = []
 
 
 
 
-const Hi = [
-  "79568777",
-  "363714261",
-  "595967632",
-  "662929773",
-  "925201439"
-]
+        const SkeletonArray = [
+          "79568777",
+          "363714261",
+          "595967632",
+          "662929773",
+          "925201439"
+        ]
+          setTimeout(() => {
+            setTime(true);
+          }, 1700);
 
 
-  setTimeout(() => {
-    setTime(true);
-  }, 1700);
-
-
-if ( !data || !time) {
-  const PadawanKeys = Hi
-  cards = PadawanKeys.map(index => {
-
-  return (
-    
-  <span key={index}>
-   
-      <PlayerSkelton />
-   
-  </span>
-  )
-  })
- 
-}
+        if ( !data || !time) {
+          let PadawanKeys = SkeletonArray
+          cards = PadawanKeys.map(index => {
+          
+          return (
+            
+          <span key={index}>
+          
+              <PlayerSkelton />
+          
+          </span>
+          )
+          })
+        
+        }
 
 
     if (data && time==true) {
@@ -70,8 +67,6 @@ if ( !data || !time) {
 
       if (searchQuery) {
         PadawanKeys = PadawanKeys.filter((index) => {
-          // data[index].name.toLowercase().includes(searchQuery.toLowerCase())
-          // return false
           return data[index].name.toLowerCase().includes(searchQuery.toLowerCase())
         })
       }
@@ -87,7 +82,6 @@ if ( !data || !time) {
       }
       
       if (sortby && sortby.toLowerCase() == "name") {
-
         PadawanKeys.sort((a, b) => {
           const nameA = data[a].name.toLowerCase()
           const nameB = data[b].name.toLowerCase()
@@ -95,24 +89,15 @@ if ( !data || !time) {
           return -1
         })
       }
-
-      
       cards = PadawanKeys.map(index => {
       const PadawanData = data[index]
-      const {name, URL, address, about, skills, timezone, twitter} = PadawanData
       return (
         <span key={index}>
-            {/* <Player name={name} pfp={URL} bg={"/banner.png"} /> */}
             <Player {...PadawanData} />
-
         </span>
       )
       })
   }
-
-  
-
-
 
   return cards
 }

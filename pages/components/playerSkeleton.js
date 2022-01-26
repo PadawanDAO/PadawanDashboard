@@ -38,7 +38,7 @@ function Player(props) {
   return (
     <div className="flex justify-center ">
     
-    <div className="border-4 border-black rounded-2xl w-screen max-w-md ">
+    <div className="border-4 border-black rounded-2xl w-fit max-w-md ">
     
 
     {/* header and pfp */}
