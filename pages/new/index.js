@@ -12,7 +12,7 @@ toast.configure()
 
 
 function PadawanForm() {
-    const DaoEvents = ["NFT.NYC", "ETHDenver", "DeCental Miami"]
+    const DaoEvents = ["NFT.NYC", "ETHLisbon", "ETHDenver", "DeCental Miami"]
     const PDAOEvents = DaoEvents.map(e => {
         return {value: e, label: e}
     })

@@ -5,7 +5,7 @@ import FilterSelector from "./FilterSelector";
 import PlayerSkelton from "./components/playerSkeleton";
 function Home({posts}) {
 
-const DaoEvents = useRef(["NFT.NYC", "ETHDenver", "DeCental Miami"])
+const DaoEvents = useRef(["NFT.NYC", "ETHDenver", "ETHLisbon", "DeCental Miami"])
 const DefaultDaoEvents = DaoEvents.current.map(e => {
     return {value: e, label: e}
 })
