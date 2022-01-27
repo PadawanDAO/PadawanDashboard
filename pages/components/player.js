@@ -39,7 +39,8 @@ function Home(props) {
     {/* header and pfp */}
     <div className="relative pb-16">
     <div className="">
-    <Image src={PFPP} width={500} height={100} alt="logo" className="w-full rounded-t-xl"/>
+   
+    <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full rounded-t-xl p-10" />
     </div>
     <div className="flex justify-center  ">
     <div className=" md:w-24 absolute top-8 ">
