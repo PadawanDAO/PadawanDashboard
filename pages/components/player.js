@@ -102,7 +102,7 @@ function Home(props) {
     <p className="h-40"> {props.about} </p>
     </div>
 
-    <div className="">
+    <div className="h-20">
     <h1 className="text-3xl font-semibold">Skills </h1>
 
     <div className="flex space-x-4 pt-2">
