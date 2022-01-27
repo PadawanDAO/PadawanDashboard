@@ -34,19 +34,21 @@ function Home(props) {
   let {name, birthday, URL, address, about, organization, skills, timezone, twitter, events} = props
 
 
-  function setSkills(){
+  // async function setSkills(){
 
-    setSkill1(skills[0]);
-    setSkill2(skills[1]);
-    setSkill3(skills[2]);
-    setSkill4(skills[3]);
+  //   let skills = await props.skills;
+
+  //   setSkill1(skills[0]);
+  //   setSkill2(skills[1]);
+  //   setSkill3(skills[2]);
+  //   setSkill4(skills[3]);
 
    
-  }
+  // }
 
-  useEffect (() => {
-    setSkills();
-  }, [])
+  // useEffect (() => {
+  //   setSkills();
+  // }, [])
   // about = about.replace(/\n+/g, " ")
   if (about) about = about.replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n');
 
@@ -106,10 +108,10 @@ function Home(props) {
     <div className="flex space-x-4 pt-2">
      
     
-   { skill1 && <Tag value={skills[0]} /> }
-   { skill2 && <Tag value={skills[1]} /> }
-   { skill3 && <Tag value={skills[2]} /> }
-   { skill4 && <Tag value={skills[3]} /> }
+   { skills && <Tag value={skills[0]} /> }
+   { skills && <Tag value={skills[1]} /> }
+   { skills && <Tag value={skills[2]} /> }
+
 
       
       </div>
