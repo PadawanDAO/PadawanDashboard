@@ -2,9 +2,10 @@ import Header from "./components/header";
 import {useEffect, useState, useRef} from "react"
 import PadawanList from "./PadawanList";
 import FilterSelector from "./FilterSelector";
+import PlayerSkelton from "./components/playerSkeleton";
 function Home({posts}) {
 
-const DaoEvents = useRef(["NFT.NYC", "ETHDenver", "DeCental Miami"])
+const DaoEvents = useRef(["NFT.NYC", "ETHDenver", "ETHLisbon", "DeCental Miami"])
 const DefaultDaoEvents = DaoEvents.current.map(e => {
     return {value: e, label: e}
 })
@@ -12,7 +13,7 @@ const DefaultDaoEvents = DaoEvents.current.map(e => {
   const [selectedEvents, setSelectedEvents] = useState(DefaultDaoEvents);
   const [searchQuery, setSearchQuery] = useState("")
   return (
-    <div className="">
+    <div className="grid place-self-center">
       <Header />
    
         <FilterSelector 
@@ -21,12 +22,15 @@ const DefaultDaoEvents = DaoEvents.current.map(e => {
           setEvents = {setSelectedEvents} 
           selectedEvents = {selectedEvents} 
           AllEvents={DefaultDaoEvents}/>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 w-full items-center gap-3">
+         
+          <div className="pr-4 pl-4 tablet:pr-20 tablet:pl-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2  place-items-center  gap-3">
         <PadawanList 
             includeEvents = {selectedEvents} 
             searchQuery = {searchQuery}
             sortby="name"/>
+        </div>
+  
   </div>
       </div>
   );

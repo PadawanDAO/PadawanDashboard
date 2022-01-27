@@ -12,7 +12,7 @@ toast.configure()
 
 
 function PadawanForm() {
-    const DaoEvents = ["NFT.NYC", "ETHDenver", "DeCental Miami"]
+    const DaoEvents = ["NFT.NYC", "ETHLisbon", "ETHDenver", "DeCental Miami"]
     const PDAOEvents = DaoEvents.map(e => {
         return {value: e, label: e}
     })
@@ -87,7 +87,7 @@ function PadawanForm() {
         <React.Fragment>
             <div className="">
             <div className='  flex justify-end m-5 '>
-                <ConnectWallet />
+                
             </div>
             <div className="-mt-20">
             <div className="form-wrapper">
@@ -103,8 +103,10 @@ function PadawanForm() {
                         <input type="date" onChange = {setBirthday} placeholder='Organization' />
                     </div>
 
+                    
+
                     <div className="input-wrapper">
-                        <label>Skills</label>
+                        <label>Skills (3)</label>
                             <ReactTagInput 
                                 tags={skills} 
                                 placeholder="Type and press enter"
@@ -137,6 +139,10 @@ function PadawanForm() {
                             formatGroupLabel={formatGroupLabel}
                             onChange = {SetEvents}
                             />
+                    </div>
+                    <div className="input-wrapper">
+                        <label>Org (school, company, anything)</label>
+                        <input variant ="standard" onChange = {setOrganization} placeholder='VitaDAO' />
                     </div>
 
                     <div className="input-wrapper">

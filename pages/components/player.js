@@ -1,6 +1,8 @@
 
+import { useFocusEffect } from "@chakra-ui/hooks";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 function CalcAge(birthday) {
   const dob = new Date(birthday);  
@@ -22,7 +24,31 @@ function Home(props) {
   const PFPP = 'https://staging-dashboard.padawandao.com/banner.png';
   const PFP = 'https://staging-dashboard.padawandao.com/img/pfp/aleem.png';
 
+
+  const [skill1, setSkill1] = useState(null);
+  const [skill2, setSkill2] = useState(null);
+  const [skill3, setSkill3] = useState(null);
+  const [skill4, setSkill4] = useState(null);
+
+
   let {name, birthday, URL, address, about, organization, skills, timezone, twitter, events} = props
+
+
+  // async function setSkills(){
+
+  //   let skills = await props.skills;
+
+  //   setSkill1(skills[0]);
+  //   setSkill2(skills[1]);
+  //   setSkill3(skills[2]);
+  //   setSkill4(skills[3]);
+
+   
+  // }
+
+  // useEffect (() => {
+  //   setSkills();
+  // }, [])
   // about = about.replace(/\n+/g, " ")
   if (about) about = about.replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n');
 
@@ -31,15 +57,16 @@ function Home(props) {
 
 
   return (
-    <div className="flex justify-center p-20">
+    <div className="flex justify-center">
     
-    <div className="border-4 border-black rounded-2xl w-fit ">
+    <div className="border-4 border-black rounded-2xl w-fit max-w-md ">
     
 
     {/* header and pfp */}
     <div className="relative pb-16">
     <div className="">
-    <Image src={PFPP} width={500} height={100} alt="logo" className="w-full rounded-t-xl"/>
+   
+    <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full rounded-t-xl p-10" />
     </div>
     <div className="flex justify-center  ">
     <div className=" md:w-24 absolute top-8 ">
@@ -71,8 +98,8 @@ function Home(props) {
 
 
     <div className="pb-4">
-    <h1 className="text-3xl font-semibold pb-1">About Me</h1>
-    <p> {props.about} </p>
+    <h1 className="text-3xl font-semibold pb-1 ">About Me</h1>
+    <p className="h-40"> {props.about} </p>
     </div>
 
     <div className="">
@@ -84,7 +111,7 @@ function Home(props) {
    { skills && <Tag value={skills[0]} /> }
    { skills && <Tag value={skills[1]} /> }
    { skills && <Tag value={skills[2]} /> }
-   { skills && <Tag value={skills[3]} /> }
+
 
       
       </div>
