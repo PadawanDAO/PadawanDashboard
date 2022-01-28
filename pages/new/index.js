@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, useEffect} from 'react'
 import { uploadFile, AddPadawan } from '../../FirebaseUtils'
 import Select from 'react-select'
 import { toast } from "react-toastify"
@@ -16,6 +16,10 @@ function PadawanForm() {
     const PDAOEvents = DaoEvents.map(e => {
         return {value: e, label: e}
     })
+    const [status, setStatus] = useState("ready")
+    const [doing, setDoing] = useState("Talking to yoda...")
+    const [redirect , setRedirect] = useState("6")
+    const [redirectThem , setRedirectThem] = useState(false)
 
     const [name, SetName] = useState("jdj");
     const [birthday, SetBirthday] = useState("jdj");
@@ -58,8 +62,9 @@ function PadawanForm() {
         if (twitter.includes("@")) return toast.error('Dont add in "@"!')
         if (twitter.includes("https://")) return toast.error("Don't use a URL!")
         if (skills.includes(",,,,,")) return toast.error("Don't use a URL!")
-
-        toast.success("Submitting...")
+        
+        setStatus("submitting")
+        
 
         const URL = await uploadFile(file)
         events = events.map(({ value }) => value)
@@ -80,11 +85,149 @@ function PadawanForm() {
         AddPadawan(padawanInfo)
     }
 
-    
+
+    if (status=="submitting") {
+        if(doing=="Talking to yoda...") {
+            setTimeout(function() {
+                setDoing("Creating the force...");
+              },1300);
+            }
+            if(doing=="Creating the force...") {
+                setTimeout(function() {
+                    setDoing("Preparring your lightsaber...");
+                  },1300);
+                }
+                if(doing=="Preparring your lightsaber...") {
+                    setTimeout(function() {
+                        setStatus("submitted");
+                      },1300);
+                    }
+        }
+
+        if (status == "submitted") {
+            if (redirect == "6") {
+                setTimeout(function () {
+                  setRedirect("5");
+                }, 1000);}
+            if (redirect == "5") {
+                setTimeout(function () {
+                  setRedirect("4");
+                }, 1000);
+              }
+          if (redirect == "4") {
+            setTimeout(function () {
+              setRedirect("3");
+            }, 1000);
+          }
+          if (redirect == "3") {
+            setTimeout(function () {
+              setRedirect("2");
+            }, 1000);
+          }
+          if (redirect == "2") {
+            setTimeout(function () {
+              setRedirect("1");
+            }, 1000);
+          }
+          if (redirect == "1") {
+            setTimeout(function () {
+              setRedirect("0");
+            }, 1000);
+          }
+          if (redirect == "0") {
+            setRedirectThem(true)
+          }
+           
+        }
+   
+   
 
 
-        return (
-        <React.Fragment>
+
+    const Array = [
+        "79568777",
+      ]
+        let cards = []
+
+        if (status == "submitting") {
+           
+            let PadawanKeys = Array
+            cards = PadawanKeys.map(index => {
+            return (
+                <span key={index}>
+                  
+                    <div className="w-screen h-screen opacity-75 delay-150 duration-600	top-0 bg-slate-500">
+        <div className="flex pt-48 justify-center">
+          <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-24 w-24"></div>
+        </div>
+        <h1 className="flex pt-8 text-white justify-center">
+          Allow us a couple seconds to upload your data!
+        </h1>
+  
+        <p className="flex pt-8 text-white justify-center">
+          Currently: {doing}
+        </p>
+      </div>
+                 
+                </span>
+            )
+            })
+        }
+        if (status=="submitted") {
+            let PadawanKeys = Array
+                cards = PadawanKeys.map(index => {
+                    return (
+                        <span key={index}>
+                      
+                        <div className="w-screen h-screen opacity-75 delay-250 duration-500	top-0 bg-slate-200">
+            <div className="flex pt-20 justify-center">
+           
+            <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+
+            </div>
+            <h1 className="flex pt-2 text-black justify-center">
+              Congratulations Padawan! &nbsp; <a href='https://dashboard.padawandao.com' className='text-blue-500 underline'> You&apos;re all set!</a>
+            </h1>
+      
+            <p className="flex pt-8 text-slate-700 justify-center">
+              Redirecting you in {redirect} seconds...
+            </p>
+          </div>
+                     
+                    </span>
+                    )
+                })
+        }
+
+        if (redirectThem==true) {
+            let PadawanKeys = Array
+                cards = PadawanKeys.map(index => {
+                    return (
+                        <span key={index}>
+                      
+                       <h1>you shouldnt be here.. hop over <a href='https://dashboard.padawandao.com'>here</a></h1>
+                     
+                    </span>
+                    )
+                })
+        }
+
+        if(redirectThem==true){
+            window.open("https://dashboard.padawandao.com", "_self")
+        }
+     
+        if ( status=="ready") {
+            let PadawanKeys = Array
+            cards = PadawanKeys.map(index => {
+            
+            return (
+              
+            <span key={index}>
+            
+            <React.Fragment>
             <div className="">
             <div className='  flex justify-end m-5 '>
                 
@@ -169,7 +312,17 @@ function PadawanForm() {
        
 
         </React.Fragment>
-        )
+            
+            </span>
+            )
+            })
+          
+          }
+
+
+
+
+        return cards
 }
 
 
