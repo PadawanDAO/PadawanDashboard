@@ -1,6 +1,6 @@
-import Header from "../components/header";
+import Header from "../components/atoms/Header";
 import { useEffect, useState, useRef } from "react";
-import PadawanList from "./PadawanList";
+import PadawanList from "../components/molecules/PadawanList";
 import FilterSelector from "../components/atoms/FilterSelector";
 import PlayerSkeleton from "../components/atoms/PlayerSkeleton";
 

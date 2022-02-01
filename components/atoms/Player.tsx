@@ -1,9 +1,8 @@
-import { useFocusEffect } from "@chakra-ui/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-function CalcAge(birthday) {
+function CalcAge(birthday: string) {
 	const dob = new Date(birthday);
 	//calculate month difference from current date in time
 	const month_diff = Date.now() - dob.getTime();
@@ -19,7 +18,28 @@ function CalcAge(birthday) {
 	return age;
 }
 
-function Home(props) {
+interface UserCardProps {
+	name: string;
+	birthday: any;
+	URL: string;
+	address: string;
+	about: string;
+	organization: string;
+	skills: string[];
+	timezone: string;
+	twitter: string;
+	events: string[];
+}
+
+function Tag(props: { value: string }) {
+	return (
+		<div className="bg-black p-2 w-fit rounded-xl">
+			<p className="text-white">{props.value}</p>
+		</div>
+	);
+}
+
+function UserCard(props: UserCardProps) {
 	const PFPP = "https://staging-dashboard.padawandao.com/banner.png";
 	const PFP = "https://staging-dashboard.padawandao.com/img/pfp/aleem.png";
 
@@ -27,19 +47,6 @@ function Home(props) {
 	const [skill2, setSkill2] = useState(null);
 	const [skill3, setSkill3] = useState(null);
 	const [skill4, setSkill4] = useState(null);
-
-	let {
-		name,
-		birthday,
-		URL,
-		address,
-		about,
-		organization,
-		skills,
-		timezone,
-		twitter,
-		events,
-	} = props;
 
 	// async function setSkills(){
 
@@ -56,12 +63,11 @@ function Home(props) {
 	//   setSkills();
 	// }, [])
 	// about = about.replace(/\n+/g, " ")
-	if (about)
-		about = about
+	if (props.about) {
+		const about = props.about
 			.replace(/(\r\n|\r|\n){2}/g, "$1")
 			.replace(/(\r\n|\r|\n){3,}/g, "$1\n");
-
-	CalcAge(birthday);
+	}
 
 	return (
 		<div className="flex justify-center">
@@ -86,14 +92,15 @@ function Home(props) {
 
 				<div className="text-center font-semibold text-xl pb-2">
 					<h1>
-						{props.name} | {`${CalcAge(birthday)}y/o`} | {timezone}
+						{props.name} | {`${CalcAge(props.birthday)}y/o`} |{" "}
+						{props.timezone}
 					</h1>
 				</div>
 				<div className="pl-8 pr-8">
 					<div className="flex  space-x-2 justify-center pb-4">
-						{events && <Tag value={events[0]} />}
-						<Tag value={organization} />
-						<Social twitter={twitter} />
+						{props.events && <Tag value={props.events[0]} />}
+						<Tag value={props.organization} />
+						<Social twitter={props.twitter} />
 					</div>
 
 					<div className="pb-4">
@@ -105,9 +112,9 @@ function Home(props) {
 						<h1 className="text-3xl font-semibold">Skills </h1>
 
 						<div className="flex space-x-4 pt-2">
-							{skills && <Tag value={skills[0]} />}
-							{skills && <Tag value={skills[1]} />}
-							{skills && <Tag value={skills[2]} />}
+							{props.skills && <Tag value={props.skills[0]} />}
+							{props.skills && <Tag value={props.skills[1]} />}
+							{props.skills && <Tag value={props.skills[2]} />}
 						</div>
 					</div>
 				</div>
@@ -118,15 +125,7 @@ function Home(props) {
 	);
 }
 
-function Tag(props) {
-	return (
-		<div className="bg-black p-2 w-fit rounded-xl">
-			<p className="text-white">{props.value}</p>
-		</div>
-	);
-}
-
-function Social(props) {
+function Social(props: { twitter: string }) {
 	return (
 		<div className="hover:cursor-pointer">
 			<Link href={`https://twitter.com/${props.twitter}`} passHref>
@@ -145,4 +144,4 @@ function Social(props) {
 		</div>
 	);
 }
-export default Home;
+export default UserCard;

@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Player from "../components/player";
-import PlayerSkeleton from "../components/atoms/playerSkeleton";
+import Player from "../atoms/Player";
+import PlayerSkeleton from "../atoms/playerSkeleton";
 import { getDatabase, ref, child, get, onValue } from "firebase/database";
-import { GetPadawans, GetPadawansTest, GetPFP } from "../FirebaseUtils";
+import { GetPadawans, GetPadawansTest, GetPFP } from "../../FirebaseUtils";
 const dbRef = ref(getDatabase());
 const db = getDatabase();
 
