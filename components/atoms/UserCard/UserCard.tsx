@@ -86,7 +86,7 @@ function UserCard(props: UserCardProps) {
 								<Twitter sx={{ fontSize: "30px", color: "#1DA1F2" }} />
 							</a>
 							&nbsp;&nbsp;
-							{`${CalcAge(props.birthday)}y/o`} | {props.timezone}
+							{`${CalcAge(props.birthday)} y/o`} | {props.timezone}
 						</h1>
 					</span>
 				</div>
