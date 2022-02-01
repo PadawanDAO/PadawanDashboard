@@ -4,7 +4,20 @@
 	color: white;
 	border-width: 4;
 	border-color: black;
-	border-radius: 5px;
+	border-radius: 20px;
+	background-color: #1f1f1f !important;
+	margin-top: 50px;
+	width: 450px;
+	/* max-width: 80vw; */
+}
+
+.cardHeader {
+	width: 450px !important;
+	/* max-width: 80vw; */
+}
+
+.card img {
+	object-fit: cover;
 }
 
 .metal {
