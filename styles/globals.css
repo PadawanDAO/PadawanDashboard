@@ -3,6 +3,7 @@
 @tailwind utilities;
 html,
 body {
+	background: black !important;
 	padding: 0;
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
@@ -289,4 +290,11 @@ textarea {
 	100% {
 		box-shadow: inset 0px 0px 0px 60px #7ac142;
 	}
+}
+
+input[type="text"] {
+	color: lightgray;
+	background-color: #303134;
+	border: none;
+	font-size: larger;
 }

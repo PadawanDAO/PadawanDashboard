@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Player from "../atoms/Player";
+import UserCard from "../atoms/UserCard/UserCard";
 import PlayerSkeleton from "../atoms/playerSkeleton";
 import { getDatabase, ref, child, get, onValue } from "firebase/database";
 import { GetPadawans, GetPadawansTest, GetPFP } from "../../FirebaseUtils";
@@ -83,7 +83,7 @@ const PadawanList = props => {
 			const PadawanData = data[index];
 			return (
 				<span key={index}>
-					<Player {...PadawanData} />
+					<UserCard {...PadawanData} />
 				</span>
 			);
 		});

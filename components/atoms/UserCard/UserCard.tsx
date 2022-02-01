@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import styles from "./UserCard.module.css";
 
 function CalcAge(birthday: string) {
 	const dob = new Date(birthday);
@@ -43,26 +44,6 @@ function UserCard(props: UserCardProps) {
 	const PFPP = "https://staging-dashboard.padawandao.com/banner.png";
 	const PFP = "https://staging-dashboard.padawandao.com/img/pfp/aleem.png";
 
-	const [skill1, setSkill1] = useState(null);
-	const [skill2, setSkill2] = useState(null);
-	const [skill3, setSkill3] = useState(null);
-	const [skill4, setSkill4] = useState(null);
-
-	// async function setSkills(){
-
-	//   let skills = await props.skills;
-
-	//   setSkill1(skills[0]);
-	//   setSkill2(skills[1]);
-	//   setSkill3(skills[2]);
-	//   setSkill4(skills[3]);
-
-	// }
-
-	// useEffect (() => {
-	//   setSkills();
-	// }, [])
-	// about = about.replace(/\n+/g, " ")
 	if (props.about) {
 		const about = props.about
 			.replace(/(\r\n|\r|\n){2}/g, "$1")
@@ -70,8 +51,8 @@ function UserCard(props: UserCardProps) {
 	}
 
 	return (
-		<div className="flex justify-center">
-			<div className="border-4 border-black rounded-2xl w-fit max-w-md ">
+		<div className={(styles.card, styles.metal)}>
+			<div className="w-fit max-w-md">
 				{/* header and pfp */}
 				<div className="relative pb-16">
 					<div className="">
@@ -112,9 +93,10 @@ function UserCard(props: UserCardProps) {
 						<h1 className="text-3xl font-semibold">Skills </h1>
 
 						<div className="flex space-x-4 pt-2">
-							{props.skills && <Tag value={props.skills[0]} />}
-							{props.skills && <Tag value={props.skills[1]} />}
-							{props.skills && <Tag value={props.skills[2]} />}
+							{props.skills &&
+								props.skills.map((skill: string, index: number) => (
+									<Tag key={index} value={skill} />
+								))}
 						</div>
 					</div>
 				</div>
