@@ -6,15 +6,8 @@ body {
 	background: black !important;
 	padding: 0;
 	margin: 0;
-	font-family: "Poppins";
-	overflow-x: auto;
+	font-family: "Poppins", sans-serif;
 }
-
-/* @font-face {
-	font-family: "SF Distant Galaxy";
-	src: local("SF Distant Galaxy"),
-		url("./fonts/SF Distant Galaxy.ttf") format("truetype");
-} */
 
 a {
 	color: inherit;

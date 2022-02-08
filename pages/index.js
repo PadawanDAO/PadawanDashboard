@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import PadawanList from "../components/molecules/PadawanList";
 import FilterSelector from "../components/atoms/FilterSelector";
 import PlayerSkeleton from "../components/atoms/PlayerSkeleton";
+import Head from "next/head";
 
 function Home({ posts }) {
 	const DaoEvents = useRef(["NFT.NYC", "ETHDenver", "ETHLisbon", "DeCental Miami"]);
@@ -13,27 +14,32 @@ function Home({ posts }) {
 	const [selectedEvents, setSelectedEvents] = useState(DefaultDaoEvents);
 	const [searchQuery, setSearchQuery] = useState("");
 	return (
-		<div className="grid place-self-center">
-			<Header />
+		<>
+			<Head>
+				<title>PadawanDAO Dashboard</title>
+			</Head>
+			<div className="grid place-self-center">
+				<Header />
 
-			<FilterSelector
-				searchQuery={searchQuery}
-				setSearchQuery={setSearchQuery}
-				setEvents={setSelectedEvents}
-				selectedEvents={selectedEvents}
-				AllEvents={DefaultDaoEvents}
-			/>
+				<FilterSelector
+					searchQuery={searchQuery}
+					setSearchQuery={setSearchQuery}
+					setEvents={setSelectedEvents}
+					selectedEvents={selectedEvents}
+					AllEvents={DefaultDaoEvents}
+				/>
 
-			<div className="pr-4 pl-4 tablet:pr-20 tablet:pl-20">
-				<div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2  place-items-center  gap-3">
-					<PadawanList
-						includeEvents={selectedEvents}
-						searchQuery={searchQuery}
-						sortby="name"
-					/>
+				<div className="pr-4 pl-4 tablet:pr-20 tablet:pl-20">
+					<div className="grid grid-cols-1 lg:grid-cols-3 tablet:grid-cols-2 place-items-center gap-10 mt-10">
+						<PadawanList
+							includeEvents={selectedEvents}
+							searchQuery={searchQuery}
+							sortby="name"
+						/>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 

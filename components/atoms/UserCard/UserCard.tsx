@@ -54,14 +54,12 @@ function UserCard(props: UserCardProps) {
 	}
 
 	return (
-		<div className={styles.card}>
-			<div className="">
+		<div className="flex justify-center">
+			<div className="border-4 border-black rounded-2xl w-fit max-w-md bg-stone-900 text-white">
 				{/* header and pfp */}
 				<div className="relative pb-16">
 					<div className="">
-						<div
-							className={`${styles.cardHeader} bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-t-xl p-10`}
-						/>
+						<div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full rounded-t-xl p-10" />
 					</div>
 					<div className="flex justify-center  ">
 						<div className=" md:w-24 absolute top-8 ">
@@ -70,12 +68,11 @@ function UserCard(props: UserCardProps) {
 								alt="pfp"
 								width={100}
 								height={100}
-								className="rounded-full"
+								className="rounded-full object-cover"
 							/>
 						</div>
 					</div>
 				</div>
-
 				<div className="text-center font-semibold text-xl pt-2 pb-2">
 					<h1 style={{ fontFamily: "Poppins", fontSize: "28px" }}>
 						{props.name}
@@ -102,9 +99,8 @@ function UserCard(props: UserCardProps) {
 						<p className="h-40"> {props.about} </p>
 					</div>
 
-					<div className="pt-5">
+					<div className="mt-5">
 						<h1 className="text-3xl font-semibold">Skills </h1>
-
 						<div className="flex space-x-4 pt-2">
 							{props.skills &&
 								props.skills.map(
